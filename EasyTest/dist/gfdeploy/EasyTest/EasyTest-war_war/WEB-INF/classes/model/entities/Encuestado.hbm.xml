@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="easytestdb" name="model.entities.Encuestado" table="encuestado">
+    <id name="idEncuestado" type="int">
+      <column name="idEncuestado"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="apellido" type="string">
+      <column length="40" name="apellido" not-null="true"/>
+    </property>
+    <property name="nombre" type="string">
+      <column length="40" name="nombre" not-null="true"/>
+    </property>
+    <property name="curso" type="string">
+      <column length="40" name="curso"/>
+    </property>
+    <property name="sexo" type="string">
+      <column length="40" name="sexo"/>
+    </property>
+    <property name="email" type="string">
+      <column length="40" name="email"/>
+    </property>
+    <property name="nivel" type="string">
+      <column length="40" name="nivel"/>
+    </property>
+    <property name="colegio" type="string">
+      <column length="40" name="colegio"/>
+    </property>
+    <set inverse="true" name="tests">
+      <key>
+        <column name="idEncuestado" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Test"/>
+    </set>
+  </class>
+</hibernate-mapping>

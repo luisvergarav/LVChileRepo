@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="easytestdb" name="model.entities.Plantilla" table="plantilla">
+    <id name="idPlantilla" type="int">
+      <column name="idPlantilla"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="model.entities.Encuestador" fetch="select" name="encuestador">
+      <column name="idEncuestador"/>
+    </many-to-one>
+    <property name="tipo" type="string">
+      <column length="20" name="tipo" not-null="true"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column length="100" name="descripcion" not-null="true"/>
+    </property>
+    <set inverse="true" name="evaluacions">
+      <key>
+        <column name="idPlantilla" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Evaluacion"/>
+    </set>
+  </class>
+</hibernate-mapping>

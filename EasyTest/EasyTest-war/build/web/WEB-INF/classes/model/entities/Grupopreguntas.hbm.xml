@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="easytestdb" name="model.entities.Grupopreguntas" table="grupopreguntas">
+    <id name="idGrupoPreguntas" type="int">
+      <column name="idGrupoPreguntas"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="descripcionGrupo" type="string">
+      <column length="50" name="descripcionGrupo" not-null="true"/>
+    </property>
+    <set inverse="true" name="preguntas">
+      <key>
+        <column name="idGrupoPreguntas" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Pregunta"/>
+    </set>
+  </class>
+</hibernate-mapping>

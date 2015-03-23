@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="easytestdb" name="model.entities.Encuestador" table="encuestador">
+    <id name="idEncuestador" type="int">
+      <column name="idEncuestador"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="30" name="Nombre" not-null="true"/>
+    </property>
+    <property name="rut" type="string">
+      <column length="20" name="Rut" not-null="true"/>
+    </property>
+    <property name="apellido" type="string">
+      <column length="40" name="Apellido" not-null="true"/>
+    </property>
+    <property name="nick" type="string">
+      <column length="40" name="Nick" not-null="true"/>
+    </property>
+    <property name="contrasena" type="string">
+      <column length="20" name="Contrasena" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column length="40" name="Email" not-null="true"/>
+    </property>
+    <set inverse="true" name="plantillas">
+      <key>
+        <column name="idEncuestador"/>
+      </key>
+      <one-to-many class="model.entities.Plantilla"/>
+    </set>
+    <set inverse="true" name="evaluacions">
+      <key>
+        <column name="idEncuestador" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Evaluacion"/>
+    </set>
+  </class>
+</hibernate-mapping>

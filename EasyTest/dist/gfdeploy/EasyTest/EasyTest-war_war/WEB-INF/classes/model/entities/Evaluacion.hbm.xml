@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-12-2014 01:13:16 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="easytestdb" name="model.entities.Evaluacion" table="evaluacion">
+    <id name="idEvaluacion" type="java.lang.Integer">
+      <column name="idEvaluacion"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="model.entities.Encuestador" fetch="select" name="encuestador">
+      <column name="idEncuestador" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.entities.Plantilla" fetch="select" name="plantilla">
+      <column name="idPlantilla" not-null="true"/>
+    </many-to-one>
+    <property name="item" type="string">
+      <column length="100" name="Item"/>
+    </property>
+    <property name="cabecera" type="string">
+      <column length="100" name="Cabecera" not-null="true"/>
+    </property>
+    <property name="mensajeConfirmacion" type="string">
+      <column length="100" name="MensajeConfirmacion"/>
+    </property>
+    <property name="piePagina" type="string">
+      <column length="100" name="PiePagina" not-null="true"/>
+    </property>
+    <set inverse="false" name="evaluacionpreguntases" table="evaluacionpreguntas" lazy="false" fetch="select" cascade="all">
+      <key>
+        <column name="idEvaluacion" not-null="true"/>
+      </key>           
+      <many-to-many entity-name="model.entities.Pregunta">
+                <column name="idPregunta" not-null="true" />
+            </many-to-many>
+      
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="easytestdb" name="model.entities.Test" table="test">
+    <composite-id class="model.entities.TestId" name="id">
+      <key-property name="idEncuestado" type="int">
+        <column name="idEncuestado"/>
+      </key-property>
+      <key-property name="idTest" type="int">
+        <column name="idTest"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="model.entities.Evaluacionpreguntas" fetch="select" name="evaluacionpreguntas">
+      <column name="idPregunta" not-null="true"/>
+      <column name="idEvaluacion" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.entities.Encuestado" fetch="select" insert="false" name="encuestado" update="false">
+      <column name="idEncuestado" not-null="true"/>
+    </many-to-one>
+    <property name="respuesta" type="char">
+      <column length="1" name="respuesta" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

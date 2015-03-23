@@ -1,0 +1,108 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"        
+        xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/shema/mvc
+        http://www.springframework.org/shema/mvc/spring-mvc-3.0.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        
+        xmlns:mvc="http://www.springframework.org/shema/mvc"
+        >
+
+    <context:component-scan base-package="model.Dao"/>
+    <context:component-scan base-package="controllers"/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+<!--
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+    <property name="username" value="chicureo"/>
+    <property name="password" value="chicureo"/>
+</bean>
+-->
+
+    <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/easyTestDb" />
+        <property name="username" value="root" />
+        <property name="password" value="7500" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+ 
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+        <property name="dataSource" ref="dataSource"/>
+    
+    
+    
+        <property name="mappingResources"  >
+
+            <list>     
+                <value>model/entities/Evaluacion.hbm.xml</value>
+                <value>model/entities/Pregunta.hbm.xml</value>
+                <value>model/entities/Evaluacionpreguntas.hbm.xml</value>
+                <value>model/entities/Encuestado.hbm.xml</value>
+                <value>model/entities/Test.hbm.xml</value>
+                <value>model/entities/Alternativas.hbm.xml</value>
+                <value>model/entities/Plantilla.hbm.xml</value>
+                <value>model/entities/Encuestador.hbm.xml</value>
+                <value>model/entities/Grupopreguntas.hbm.xml</value>
+  
+            </list>
+        </property>
+    
+        <property name="hibernateProperties">
+            <props>
+         <!--<prop key="hibernat<e.dialect">org.hibernate.dialect.Oracle10gDialect</prop>-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+         
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+                <prop key="hibernate.hbm2ddl.auto" ></prop>
+         
+            </props>
+        </property>
+
+
+    </bean>
+
+
+	
+    <bean id="EvaluacionDao" class="model.Dao.EvaluacionDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <bean id="EncuestadorDao" class="model.Dao.EncuestadorDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+
+  
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="order" value="2"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+
+
+  
+
+</beans>
+

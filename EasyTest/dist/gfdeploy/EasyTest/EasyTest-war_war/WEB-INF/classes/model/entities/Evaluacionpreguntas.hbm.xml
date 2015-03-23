@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 01-12-2014 01:13:16 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="easytestdb" name="model.entities.Evaluacionpreguntas" table="evaluacionpreguntas">
+    <composite-id class="model.entities.EvaluacionpreguntasId" name="id">
+      <key-property name="idPregunta" type="int">
+        <column name="idPregunta"/>
+      </key-property>
+      <key-property name="idEvaluacion" type="int">
+        <column name="idEvaluacion"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="model.entities.Pregunta" fetch="select" insert="false" name="pregunta" update="false">
+      <column name="idPregunta" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.entities.Evaluacion" fetch="select" insert="false" name="evaluacion" update="false">
+      <column name="idEvaluacion" not-null="true"/>
+    </many-to-one>
+    <property name="fechaHora" type="timestamp">
+      <column length="19" name="fechaHora"/>
+    </property>
+    <set inverse="true" name="tests">
+      <key>
+        <column name="idPregunta" not-null="true"/>
+        <column name="idEvaluacion" not-null="true"/>
+      </key>
+      <one-to-many class="model.entities.Test"/>
+    </set>
+  </class>
+</hibernate-mapping>
