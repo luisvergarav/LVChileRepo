@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Profesor" table="profesor">
+    <id name="idProfesor" type="string">
+      <column length="9" name="id_profesor"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="model.Entitys.TipoTaller" fetch="select" name="tipoTaller">
+      <column name="Tipo_taller_id_tipo_taller" not-null="true"/>
+    </many-to-one>
+    <property name="nombreProfesor" type="string">
+      <column length="40" name="nombre_profesor" not-null="true"/>
+    </property>
+    <property name="apellidoProfesor" type="string">
+      <column length="40" name="apellido_profesor" not-null="true"/>
+    </property>
+    <set inverse="true" lazy="false" name="seccionprofesors" table="seccionprofesor">
+      <key>
+        <column length="9" name="profesor_id_profesor" not-null="true"/>
+      </key>
+      <many-to-many entity-name="model.Entitys.Seccion">
+        <column name="seccion_cod_seccion" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>

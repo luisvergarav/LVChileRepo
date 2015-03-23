@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-06-2014 12:48:11 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Users" table="USERS">
+    <id name="userId" type="long">
+      <column name="USER_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="username" type="string">
+      <column length="45" name="USERNAME" not-null="true"/>
+    </property>
+    <property name="password" type="string">
+      <column length="45" name="PASSWORD" not-null="true"/>
+    </property>
+    <property name="enabled" type="boolean">
+      <column name="ENABLED" not-null="true" precision="1" scale="0"/>
+    </property>
+    <set inverse="false" name="userRoleses" lazy="false">
+      <key>
+        <column name="USER_ID" not-null="true" precision="10" scale="0"/>
+      </key>
+      <one-to-many class="model.Entitys.UserRoles"/>
+    </set>
+    <set inverse="true" lazy="false" name="apoderados">
+      <key>
+        <column length="9" name="userId" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Apoderado"/>
+    </set>
+  </class>
+</hibernate-mapping>

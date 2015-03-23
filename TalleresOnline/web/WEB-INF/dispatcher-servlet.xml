@@ -1,0 +1,228 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"        
+        xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/shema/mvc
+        http://www.springframework.org/shema/mvc/spring-mvc-3.0.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        
+        xmlns:mvc="http://www.springframework.org/shema/mvc"
+        >
+
+    	<context:component-scan base-package="model.dao"/>
+          	<context:component-scan base-package="controllers"/>
+<tx:annotation-driven transaction-manager="transactionManager"/>
+<!--
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+    <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+    <property name="username" value="chicureo"/>
+    <property name="password" value="chicureo"/>
+</bean>
+-->
+
+  <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/chicureo_talleres" />
+		<property name="username" value="root" />
+		<property name="password" value="7500" />
+	</bean>
+
+<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+     <property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+ 
+        <tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+    <property name="dataSource" ref="dataSource"/>
+    
+    
+    
+    <property name="mappingResources"  >
+
+	<list>     
+            <value>model/Entitys/Taller.hbm.xml</value>
+    <value>model/Entitys/Alumno.hbm.xml</value>
+
+        <value>model/Entitys/Alumnoseccion.hbm.xml</value>
+        <value>model/Entitys/Diasseccion.hbm.xml</value>
+    <value>model/Entitys/Institucion.hbm.xml</value>
+    <value>model/Entitys/Seccion.hbm.xml</value>
+      <value>model/Entitys/Seccionprofesor.hbm.xml</value>
+    <value>model/Entitys/Profesor.hbm.xml</value>
+    <value>model/Entitys/Gratis.hbm.xml</value>
+    <value>model/Entitys/TipoTaller.hbm.xml</value>
+    <value>model/Entitys/Pagada.hbm.xml</value>
+<value>model/Entitys/Formapago.hbm.xml</value>
+<value>model/Entitys/Pago.hbm.xml</value>
+<value>model/Entitys/UserRoles.hbm.xml</value>
+<value>model/Entitys/Semestre.hbm.xml</value>
+<value >model/Entitys/Users.hbm.xml</value>
+<value >model/Entitys/Apoderado.hbm.xml</value>
+<value >model/Entitys/Cheque.hbm.xml</value>
+        </list>
+      </property>
+    
+    <property name="hibernateProperties">
+       <props>
+         <!--<prop key="hibernat<e.dialect">org.hibernate.dialect.Oracle10gDialect</prop>-->
+         <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+         
+         <prop key="hibernate.show_sql">true</prop>
+         <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+         <prop key="hibernate.hbm2ddl.auto" ></prop>
+         
+       </props>
+     </property>
+
+
+  </bean>
+
+
+	
+	<bean id="TallerDao" class="model.Dao.TallerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+        <bean id="InstitucionDao" class="model.Dao.InstitucionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+        <bean id="SeccionDao" class="model.Dao.SeccionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+      <bean id="ProfesorDao" class="model.Dao.ProfesorDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+        
+      <bean id="InscripcionPagadaDao" class="model.Dao.InscripcionPagadaDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+      
+       <bean id="AlumnoDao" class="model.Dao.AlumnoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+      
+      <bean id="InscripcionGratisDao" class="model.Dao.InscripcionGratisDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+      
+ 
+      <bean id="DiasseccionDao" class="model.Dao.DiasseccionDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+      
+      <bean id="UserDao" class="model.Dao.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+        
+        <bean id="TipoTallerDao" class="model.Dao.TipoTallerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+        
+        
+        <bean id="SemestreDao" class="model.Dao.SemestreDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+   
+   
+        <bean id="FormaPagoDao" class="model.Dao.FormaPagoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+   
+   <bean id="PagoDao" class="model.Dao.PagoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+      <bean id="ApoderadoDao" class="model.Dao.ApoderadoDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+  
+   <bean id="UserRolesDao" class="model.Dao.UserRolesDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+  
+  
+  <bean id="ChequeDao" class="model.Dao.ChequeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+         <!-- an HTTP Session-scoped bean exposed as a proxy -->
+   <bean id="cartBean" class="models.VO.CartBean" scope="session">
+      <!-- this next element effects the proxying of the surrounding bean -->
+      <aop:scoped-proxy/>
+   </bean>
+  
+   <bean id="alumno" class="model.Entitys.Alumno" scope="session">
+      <!-- this next element effects the proxying of the surrounding bean -->
+      <aop:scoped-proxy/>
+   </bean>
+  
+  <bean id="taller" class="model.Entitys.Taller" scope="session">
+      <!-- this next element effects the proxying of the surrounding bean -->
+      <aop:scoped-proxy/>
+   </bean>
+   <bean id="usuario" class="model.Entitys.Users" scope="session">
+      <!-- this next element effects the proxying of the surrounding bean -->
+      <aop:scoped-proxy/>
+   </bean>
+  
+   <bean id="apoderado" class="model.Entitys.Apoderado" scope="session">
+      <!-- this next element effects the proxying of the surrounding bean -->
+      <aop:scoped-proxy/>
+   </bean>
+
+  <bean id="pago" class="model.Entitys.Pago" scope="session">
+      <!-- this next element effects the proxying of the surrounding bean -->
+      <aop:scoped-proxy/>
+   </bean>
+
+      <bean id="TallerDateEditor"
+    class="org.springframework.beans.propertyeditors.CustomDateEditor">
+    <constructor-arg >
+      <bean class="java.text.SimpleDateFormat">
+        <constructor-arg><value>yyyy-MM-dd</value></constructor-arg>
+      </bean>
+    </constructor-arg>
+    <constructor-arg ><value>true</value></constructor-arg>
+  </bean>
+ 
+ <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Date">
+					<ref local="TallerDateEditor" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+ 
+  
+        <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="order" value="2"/>
+  <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+  <property name="prefix" value="/WEB-INF/pages/"/>
+  <property name="suffix" value=".jsp"/>
+</bean>
+
+<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+    <property name="order" value="1"/>
+       <property name="location">
+          <value>/WEB-INF/pdfReportViewXml.xml</value>
+       </property>
+    </bean>
+
+
+  
+
+</beans>
+

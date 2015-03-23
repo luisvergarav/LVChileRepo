@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Taller" table="taller">
+    <id name="idTaller" type="java.lang.Integer">
+      <column name="id_taller"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="model.Entitys.Institucion" fetch="select" lazy="false" name="institucion">
+      <column length="9" name="rut_institucion" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Entitys.TipoTaller" fetch="select" lazy="false" name="tipoTaller">
+      <column name="id_tipo_taller" not-null="true"/>
+    </many-to-one>
+    <property name="cupos" type="int">
+      <column name="cupos" not-null="true"/>
+    </property>
+    <property name="codigo" type="string">
+      <column length="40" name="codigo" not-null="true"/>
+    </property>
+    <property name="nombreTaller" type="string">
+      <column length="40" name="nombre_taller" not-null="true"/>
+    </property>
+    <property name="inicioTaller" type="date">
+      <column length="19" name="inicio_taller" not-null="true"/>
+    </property>
+    <property name="terminoTaller" type="date">
+      <column length="19" name="termino_taller" not-null="true"/>
+    </property>
+    <property name="claseTaller" type="string">
+      <column length="2" name="clase_taller" not-null="true"/>
+    </property>
+    <property name="primero" type="int">
+      <column name="primero" not-null="true"/>
+    </property>
+    <property name="monto" type="big_decimal">
+      <column name="monto" not-null="true" precision="10"/>
+    </property>
+    <property name="segundo" type="int">
+      <column name="segundo" not-null="true"/>
+    </property>
+    <property name="tercero" type="int">
+      <column name="tercero" not-null="true"/>
+    </property>
+    <property name="cuarto" type="int">
+      <column name="cuarto" not-null="true"/>
+    </property>
+    <property name="quinto" type="int">
+      <column name="quinto" not-null="true"/>
+    </property>
+    <property name="sexto" type="int">
+      <column name="sexto" not-null="true"/>
+    </property>
+    <property name="septimo" type="int">
+      <column name="septimo" not-null="true"/>
+    </property>
+    <property name="octavo" type="int">
+      <column name="octavo" not-null="true"/>
+    </property>
+    <property name="pmedio" type="int">
+      <column name="pmedio" not-null="true"/>
+    </property>
+    <property name="smedio" type="int">
+      <column name="smedio" not-null="true"/>
+    </property>
+    <property name="tmedio" type="int">
+      <column name="tmedio" not-null="true"/>
+    </property>
+    <property name="cmedio" type="int">
+      <column name="cmedio" not-null="true"/>
+    </property>
+    <property name="prekinder" type="int">
+      <column name="prekinder" not-null="true"/>
+    </property>
+    <property name="kinder" type="int">
+      <column name="kinder" not-null="true"/>
+    </property>
+     <property name="inscritos" type="int">
+      <column name="inscritos" not-null="true"/>
+    </property>
+    <property name="jardin" type="int">
+      <column name="jardin" not-null="true"/>
+    </property>
+    <property name="genero" type="string">
+      <column name="genero" not-null="false"/>
+    </property>
+    <set inverse="true" lazy="false" name="seccions">
+      <key>
+        <column name="id_taller" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Seccion"/>
+    </set>
+    <set inverse="true" lazy="false" name="pagadas">
+      <key>
+        <column name="pagada_id_taller" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Pagada"/>
+    </set>
+    <set inverse="true" lazy="false" name="gratises">
+      <key>
+        <column name="gratis_id_taller" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Gratis"/>
+    </set>
+    <many-to-one class="model.Entitys.Semestre" fetch="select" lazy="false" name="semestre">
+      <column name="semestre_idsemestre" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Gratis" table="gratis">
+    <composite-id class="model.Entitys.GratisId" name="id">
+      <key-property name="inscripcionRutAlumno" type="string">
+        <column length="9" name="Inscripcion_rut_alumno"/>
+      </key-property>
+      <key-property name="gratisIdTaller" type="int">
+        <column name="gratis_id_taller"/>
+      </key-property>
+      <key-property name="semestreIdsemestre" type="int">
+        <column name="semestre_idsemestre"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="model.Entitys.Semestre" fetch="select" insert="false" lazy="false" name="semestre" update="false">
+      <column name="semestre_idsemestre" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Entitys.Alumno" fetch="select" insert="false" lazy="false" name="alumno" update="false">
+      <column length="9" name="Inscripcion_rut_alumno" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Entitys.Taller" fetch="select" insert="false" lazy="false" name="taller" update="false">
+      <column name="gratis_id_taller" not-null="true"/>
+    </many-to-one>
+    <property name="inscripcionFechaInscripcion" type="timestamp">
+      <column length="19" name="Inscripcion_fecha_inscripcion" not-null="true"/>
+    </property>
+    <property name="numOrdenInscripcion" type="string">
+      <column length="40" name="numOrdenInscripcion" not-null="false" unique="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

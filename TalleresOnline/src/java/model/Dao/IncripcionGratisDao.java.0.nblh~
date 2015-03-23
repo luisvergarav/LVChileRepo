@@ -1,0 +1,15 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package model.Dao;
+
+/**
+ *
+ * @author Luis
+ */
+public interface IncripcionGratisDao {
+       public void guardarInscripcion(Gratis gratis);
+    public Gratis obtenerPorId(GratisId idGratis);
+    public List<Gratis> obtenerTodos();
+}

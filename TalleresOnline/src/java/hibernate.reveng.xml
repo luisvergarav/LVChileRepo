@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="chicureo_talleres"/>
+  <table-filter match-name="institucion"/>
+  <table-filter match-name="alumnoseccion"/>
+  <table-filter match-name="gratis"/>
+  <table-filter match-name="tipo_taller"/>
+  <table-filter match-name="alumno"/>
+  <table-filter match-name="apoderado"/>
+  <table-filter match-name="semestre"/>
+  <table-filter match-name="taller"/>
+  <table-filter match-name="pagada"/>
+  <table-filter match-name="seccionprofesor"/>
+  <table-filter match-name="diasseccion"/>
+  <table-filter match-name="profesor"/>
+  <table-filter match-name="seccion"/>
+  <table-filter match-name="pago"/>
+  <table-filter match-name="formapago"/>
+  <table-filter match-name="cheque"/>
+</hibernate-reverse-engineering>

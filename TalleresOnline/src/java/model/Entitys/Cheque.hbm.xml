@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-03-2015 08:10:11 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="model.Entitys.Cheque" table="cheque" catalog="chicureo_talleres">
+        <id name="idCheque" type="java.lang.Integer">
+            <column name="idCheque" />
+            <generator class="increment" />
+        </id>
+        <property name="serie" type="string">
+            <column name="serie" length="40" not-null="true" />
+        </property>
+        <property name="banco" type="string">
+            <column name="banco" length="40" not-null="true" />
+        </property>
+        <property name="titular" type="string">
+            <column name="titular" length="40" not-null="true" />
+        </property>
+        <property name="monto" type="double">
+            <column name="monto" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="fechaPago" type="date">
+            <column name="fechaPago" length="10" not-null="true" />
+        </property>
+       
+        
+          <many-to-one class="model.Entitys.Pago" fetch="select" lazy="false" name="pago">
+      <column length="9" name="cheque_id_pago" not-null="true"/>
+    </many-to-one>
+        
+    </class>
+</hibernate-mapping>

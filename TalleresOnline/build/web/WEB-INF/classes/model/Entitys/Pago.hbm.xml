@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Pago" table="pago">
+    <id name="idPago" type="int">
+      <column length="40" name="id_pago"/>
+      <generator class="increment"/>
+    </id>
+    <many-to-one class="model.Entitys.Formapago" fetch="select" name="formapago">
+      <column name="id_formaPago" not-null="true"/>
+    </many-to-one>
+    <property name="montoPago" type="big_decimal">
+      <column name="montoPago" not-null="true" precision="10"/>
+    </property>
+    <property name="fechaPago" type="timestamp">
+      <column length="19" name="fechaPago" not-null="true"/>
+    </property>
+    <property name="serie" type="string">
+      <column length="40" name="serie" not-null="false"/>
+    </property>
+    <property name="banco" type="string">
+      <column length="40" name="banco" not-null="false"/>
+    </property>
+    <property name="titular" type="string">
+      <column length="40" name="titular" not-null="false"/>
+    </property>
+    <set inverse="true" lazy="false" name="pagadas">
+      <key>
+        <column length="40" name="pagada_id_pago" not-null="false"/>
+      </key>
+      <one-to-many class="model.Entitys.Pagada"/>
+    </set>
+    
+     <set inverse="true" lazy="false" name="cheques">
+      <key>
+        <column  name="cheque_id_pago" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Cheque"/>
+    </set>
+  </class>
+</hibernate-mapping>

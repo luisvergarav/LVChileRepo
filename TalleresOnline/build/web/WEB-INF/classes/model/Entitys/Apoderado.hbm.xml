@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Apoderado" table="apoderado">
+    <id name="rutApoderado" type="string">
+      <column length="9" name="rut_apoderado"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="primerNombre" type="string">
+      <column length="40" name="primer_nombre" not-null="true"/>
+    </property>
+    <property name="segundoNombre" type="string">
+      <column length="40" name="segundo_nombre" not-null="true"/>
+    </property>
+    <property name="apellidoPaterno" type="string">
+      <column length="40" name="apellido_paterno" not-null="true"/>
+    </property>
+    <property name="apellidoMaterno" type="string">
+      <column length="40" name="apellido_materno" not-null="true"/>
+    </property>
+    <property name="fechaNacimiento" type="date">
+      <column length="10" name="fecha_nacimiento" not-null="true"/>
+    </property>
+    <property name="mail" type="string">
+      <column length="40" name="mail" not-null="true"/>
+    </property>
+    <property name="telefono" type="string">
+      <column length="10" name="telefono" not-null="true"/>
+    </property>
+    <property name="tipoUsuario" type="string">
+      <column length="50" name="tipo_usuario" not-null="false"/>
+    </property>
+      <many-to-one class="model.Entitys.Users" fetch="select" name="usuario" >
+      <column length="9" name="userId" not-null="true"/>
+    </many-to-one>
+  
+    <set inverse="true" lazy="false " name="alumnos">
+      <key>
+        <column length="9" name="rut_apoderado" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Alumno"/>
+    </set>
+  </class>
+</hibernate-mapping>

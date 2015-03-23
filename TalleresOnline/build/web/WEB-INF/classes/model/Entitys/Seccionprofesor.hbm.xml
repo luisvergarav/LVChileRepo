@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Seccionprofesor" table="seccionprofesor">
+    <composite-id class="model.Entitys.SeccionprofesorId" name="id">
+      <key-property name="seccionDiaTaller" type="string">
+        <column length="20" name="seccion_dia_taller"/>
+      </key-property>
+      <key-property name="seccionIdTaller" type="int">
+        <column name="seccion_id_taller"/>
+      </key-property>
+      <key-property name="seccionCodSeccion" type="int">
+        <column name="seccion_cod_seccion"/>
+      </key-property>
+      <key-property name="profesorIdProfesor" type="string">
+        <column length="9" name="Profesor_id_profesor"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="model.Entitys.Seccion" fetch="select" insert="false" name="seccion" update="false">
+      <column name="seccion_cod_seccion" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="model.Entitys.Profesor" fetch="select" insert="false" name="profesor" update="false">
+      <column length="9" name="Profesor_id_profesor" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

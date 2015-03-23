@@ -1,0 +1,77 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+            
+ 
+	<http   auto-config="true" >
+                <intercept-url pattern="/inscripciones/*"  access="ROLE_USER"/>
+                <intercept-url pattern="/inscripciones/activar/**"  access="ROLE_COORDINACION"/>
+                <intercept-url pattern="/pagos/**"  access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+                <intercept-url pattern="/informes/**"  access="ROLE_COORDINACION" />                
+                <intercept-url pattern="/sistema/**" access="ROLE_SUPER"  />
+                <intercept-url pattern="/inscripciones/coordinacion/**"  access="ROLE_COORDINACION"/>
+                <intercept-url pattern="/mantenedor/**" access="ROLE_COORDINACION"  />
+                <intercept-url pattern="/mantenedor/**" access="ROLE_SUPER"  />
+                <intercept-url pattern="/resources/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+                <intercept-url pattern="/resources/css/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+                <intercept-url pattern="/resources/js/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+                   <intercept-url pattern="/resources/img/**" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+                <intercept-url pattern="/login.do*" access="IS_AUTHENTICATED_ANONYMOUSLY"  />
+<!--
+<form-login login-page="/login.do" default-target-url="/inscripciones/seleccionarAlumno.do"
+			authentication-failure-url="/loginfailed" />
+		<logout logout-success-url="/logout.do" invalidate-session="true"/>                 
+-->
+                
+                <form-login login-page="/login.do" 
+			authentication-failure-url="/loginfailed.do"
+                        authentication-success-handler-ref="myAuthenticationSuccessHandler"/>
+		<logout logout-success-url="/logout.do" invalidate-session="true"/>                 
+	</http>
+        
+ 
+    <beans:bean id="myAuthenticationSuccessHandler"
+        class="controllers.MySimpleUrlAuthenticationSuccessHandler" />
+ 
+        
+ 
+	<authentication-manager>
+<!--
+          <authentication-provider>
+		<user-service>
+			<user name="lvergara" password="1234" authorities="ROLE_USER" />
+		</user-service>
+	  </authentication-provider>
+-->         
+
+          <authentication-provider>
+		<jdbc-user-service data-source-ref="dataSource"
+ 
+		   users-by-username-query="
+		      select username,password, enabled 
+		      from users where username=?" 
+ 
+		   authorities-by-username-query="
+		      select u.username, ur.authority from users u, user_roles ur 
+		      where u.user_id = ur.user_id and u.username =?  " 
+ 
+
+ 
+
+		/>
+	   </authentication-provider>
+ 
+	</authentication-manager>
+
+ 
+
+
+
+      
+
+        
+</beans:beans>

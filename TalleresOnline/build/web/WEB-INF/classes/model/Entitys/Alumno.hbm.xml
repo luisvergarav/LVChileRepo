@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Alumno" table="alumno">
+    <id name="rutAlumno" type="string">
+      <column length="9" name="rut_alumno"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="model.Entitys.Apoderado" fetch="select" name="apoderado">
+      <column length="9" name="rut_apoderado" not-null="true"/>
+    </many-to-one>
+    <property name="primerNombre" type="string">
+      <column length="40" name="primer_nombre" not-null="true"/>
+    </property>
+    <property name="apellidoPaterno" type="string">
+      <column length="40" name="apellido_paterno" not-null="true"/>
+    </property>
+    <property name="segundoNombre" type="string">
+      <column length="40" name="segundo_nombre" not-null="true"/>
+    </property>
+    <property name="apellidoMaterno" type="string">
+      <column length="40" name="apellido_materno" not-null="true"/>
+    </property>
+    <property name="fechaNacimiento" type="date">
+      <column length="10" name="fecha_nacimiento" not-null="true"/>
+    </property>
+    <property name="curso" type="string">
+      <column length="2" name="curso" not-null="true"/>
+    </property>
+    <property name="sexo" type="string">
+      <column length="1" name="sexo" not-null="true"/>
+    </property>
+    <property name="direccion" type="string">
+      <column length="40" name="direccion" not-null="true"/>
+    </property>
+    <property name="fono" type="string">
+      <column length="10" name="fono" not-null="true"/>
+    </property>
+    <property name="nivel" type="string">
+      <column length="1" name="nivel" not-null="true"/>
+    </property>
+    <set inverse="true" lazy="false" name="gratises">
+      <key>
+        <column length="9" name="Inscripcion_rut_alumno" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Gratis"/>
+    </set>
+    <set inverse="true" lazy="false" name="pagadas">
+      <key>
+        <column length="9" name="Inscripcion_rut_alumno" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Pagada"/>
+    </set>
+    <set inverse="true" lazy="false" name="alumnoseccions" table="alumnoseccion">
+      <key>
+        <column length="9" name="rut_alumno" not-null="true"/>
+      </key>
+      <many-to-many entity-name="model.Entitys.Seccion">
+        <column name="cod_seccion" not-null="true"/>
+      </many-to-many>
+    </set>
+    <many-to-one class="model.Entitys.Semestre" fetch="select" name="semestre">
+      <column name="idSemestre" not-null="true"/>
+    </many-to-one>
+  </class>
+</hibernate-mapping>

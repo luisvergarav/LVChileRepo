@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Institucion" table="institucion">
+    <id name="rutInstitucion" type="string">
+      <column length="9" name="rut_institucion"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="40" name="nombre" not-null="true"/>
+    </property>
+    <set inverse="true" lazy="false" name="tallers">
+      <key>
+        <column length="9" name="rut_institucion" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Taller"/>
+    </set>
+    <set inverse="true" lazy="false" name="tipoTallers">
+      <key>
+        <column length="9" name="Institucion_rut_institucion" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.TipoTaller"/>
+    </set>
+    <set inverse="true" lazy="false" name="semestres">
+      <key>
+        <column length="9" name="Institucion_rut_institucion" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Semestre"/>
+    </set>
+  </class>
+</hibernate-mapping>

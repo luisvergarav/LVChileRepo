@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 07-07-2014 01:00:13 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.Seccion" table="seccion">
+    <id name="codSeccion" type="java.lang.Integer">
+      <column name="cod_seccion"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="model.Entitys.Taller" fetch="select" lazy="false" name="taller">
+      <column name="id_taller" not-null="true"/>
+    </many-to-one>
+    <property name="cupos" type="int">
+      <column name="cupos" not-null="true"/>
+    </property>
+    <property name="nombreSeccion" type="string">
+      <column length="40" name="nombre_seccion" not-null="true" unique="true"/>
+    </property>
+    <property name="inscritos" type="int">
+      <column name="inscritos" not-null="true"/>
+    </property>
+    <set inverse="true" lazy="false" name="diasseccions">
+      <key>
+        <column name="seccion_cod_seccion" not-null="true"/>
+      </key>
+      <one-to-many class="model.Entitys.Diasseccion"/>
+    </set>
+    <set inverse="false" lazy="false" name="seccionprofesors" table="seccionprofesor">
+      <key>
+        <column name="seccion_cod_seccion" not-null="true"/>
+      </key>
+      <many-to-many entity-name="model.Entitys.Profesor">
+        <column name="profesor_id_profesor" not-null="true"/>
+      </many-to-many>
+    </set>
+    <set cascade="all" inverse="false" lazy="false" name="alumnoseccions" table="alumnoseccion">
+      <key>
+        <column name="cod_seccion" not-null="true"/>
+      </key>
+      <many-to-many entity-name="model.Entitys.Alumno">
+        <column name="rut_alumno" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>

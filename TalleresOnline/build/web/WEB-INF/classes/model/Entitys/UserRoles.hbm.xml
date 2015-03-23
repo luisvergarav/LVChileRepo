@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-06-2014 12:48:11 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="chicureo_talleres" name="model.Entitys.UserRoles" table="USER_ROLES">
+    <id name="userRoleId" type="long">
+      <column name="USER_ROLE_ID" precision="10" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="model.Entitys.Users" fetch="select" name="users" >
+      <column name="USER_ID" not-null="true" precision="10" scale="0"/>
+    </many-to-one>
+    <property name="authority" type="string">
+      <column length="45" name="AUTHORITY" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

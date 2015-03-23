@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/chicureo_talleres</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">7500</property>
+    <mapping resource="model/Entitys/Users.hbm.xml"/>
+    <mapping resource="model/Entitys/Apoderado.hbm.xml"/>
+    <mapping resource="model/Entitys/Taller.hbm.xml"/>
+    <mapping resource="model/Entitys/Institucion.hbm.xml"/>
+    <mapping resource="model/Entitys/Profesor.hbm.xml"/>
+    <mapping resource="model/Entitys/UserRoles.hbm.xml"/>
+    <mapping resource="model/Entitys/Seccion.hbm.xml"/>
+    <mapping resource="model/Entitys/Alumno.hbm.xml"/>
+    <mapping resource="model/Entitys/Semestre.hbm.xml"/>
+    <mapping resource="model/Entitys/Gratis.hbm.xml"/>
+    <mapping resource="model/Entitys/Pago.hbm.xml"/>
+    <mapping resource="model/Entitys/Alumnoseccion.hbm.xml"/>
+    <mapping resource="model/Entitys/Formapago.hbm.xml"/>
+    <mapping resource="model/Entitys/Pagada.hbm.xml"/>
+    <mapping resource="model/Entitys/Seccionprofesor.hbm.xml"/>
+    <mapping resource="model/Entitys/TipoTaller.hbm.xml"/>
+    <mapping resource="model/Entitys/Cheque.hbm.xml"/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping/>
+    <mapping resource="model/Entitys/Diasseccion.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="alumnos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="57aef9ae-c10b-46c3-ad7b-7f20b831340a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="14"/>
+	<subDataset name="dataset1" uuid="ae55f5c0-8e38-4375-a7e7-071eb406d9c5"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="cupos" class="java.lang.Integer">
+		<fieldDescription><![CDATA[cupos]]></fieldDescription>
+	</field>
+	<field name="codSeccion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[codSeccion]]></fieldDescription>
+	</field>
+	<field name="nombreSeccion" class="java.lang.String">
+		<fieldDescription><![CDATA[nombreSeccion]]></fieldDescription>
+	</field>
+	<field name="diasseccions" class="java.util.Set">
+		<fieldDescription><![CDATA[diasseccions]]></fieldDescription>
+	</field>
+	<field name="seccionprofesors" class="java.util.Set">
+		<fieldDescription><![CDATA[seccionprofesors]]></fieldDescription>
+	</field>
+	<variable name="diasseccions_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{diasseccions}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="243" y="30" width="100" height="20" uuid="81a2ec45-36a9-44c9-a755-8df271b6669e"/>
+				<text><![CDATA[Reporte Alumnos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="7" width="100" height="33" uuid="07c170a6-aa45-40a6-a6ff-ca4f0f358429"/>
+				<text><![CDATA[Colegio Sta.Cruz Chicureo]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="443" y="7" width="100" height="20" uuid="72d90d5a-0e78-4865-aa5c-cdbb18a7a177"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="6" width="100" height="20" uuid="5c548477-81aa-473c-beda-fb8817b4ea41"/>
+				<text><![CDATA[codSeccion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="6" width="100" height="20" uuid="33db7603-3491-4591-a867-d15cff92a3bc"/>
+				<text><![CDATA[cupos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="6" width="100" height="20" uuid="13f8c1a9-5fe4-455c-84b5-9866da793725"/>
+				<text><![CDATA[nombreSeccion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="135" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="5" width="100" height="20" uuid="6e616467-1e4f-454c-83a3-20e552d80cd0"/>
+				<textFieldExpression><![CDATA[$F{codSeccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="5" width="100" height="20" uuid="46acc194-67d7-4893-a05f-0d070abca3af"/>
+				<textFieldExpression><![CDATA[$F{cupos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="5" width="100" height="20" uuid="f0d35599-3b90-4d7a-90cf-cf83397cacce"/>
+				<textFieldExpression><![CDATA[$F{nombreSeccion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="56" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement x="443" y="33" width="100" height="20" uuid="02fc4f74-e0d1-4912-a714-440ac7a300ec"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="223" y="22" width="100" height="20" uuid="fee570bd-3d54-4d20-8fd5-28230c956792"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
