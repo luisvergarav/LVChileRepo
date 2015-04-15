@@ -14,19 +14,11 @@ public class Alternativas  implements java.io.Serializable {
      private int puntaje;
      private Boolean correcta;
      private String textoAlternativa;
-     private Boolean seleccionada;
-     
+
      
     public Alternativas() {
     }
 
-    public Boolean getSeleccionada() {
-        return seleccionada;
-    }
-
-    public void setSeleccionada(Boolean seleccionada) {
-        this.seleccionada = seleccionada;
-    }
 
     
     

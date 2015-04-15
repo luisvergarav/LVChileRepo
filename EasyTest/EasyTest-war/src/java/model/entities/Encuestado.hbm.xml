@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="easytestdb" name="model.entities.Encuestado" table="encuestado">
+  <class catalog="easytest" name="model.entities.Encuestado" table="encuestado">
     <id name="idEncuestado" type="int">
       <column name="idEncuestado"/>
       <generator class="assigned"/>

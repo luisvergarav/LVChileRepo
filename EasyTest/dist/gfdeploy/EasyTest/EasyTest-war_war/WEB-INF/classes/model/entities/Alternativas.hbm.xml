@@ -2,10 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="easytestdb" name="model.entities.Alternativas" table="alternativas">
+  <class catalog="easytest" name="model.entities.Alternativas" table="alternativas">
     <id name="idAlternativa" type="int">
       <column name="idAlternativa"/>
-      <generator class="assigned"/>
+      <generator class="sequence">
+          <param name="sequence">IDALTERNATIVA_SEC</param>
+      </generator>
     </id>
     <many-to-one class="model.entities.Pregunta" fetch="select" name="pregunta">
       <column name="idPregunta" not-null="true"/>
@@ -19,8 +21,6 @@
     <property name="correcta" type="java.lang.Boolean">
       <column name="correcta"/>
     </property>
-    <property name="seleccionada" type="java.lang.Boolean">
-      <column name="seleccionada"/>
-    </property>
+
   </class>
 </hibernate-mapping>

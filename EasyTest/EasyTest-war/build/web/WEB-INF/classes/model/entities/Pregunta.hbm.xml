@@ -2,10 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 01-12-2014 01:13:16 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="easytestdb" name="model.entities.Pregunta" table="pregunta">
+  <class catalog="easytest" name="model.entities.Pregunta" table="pregunta">
     <id name="idPregunta" type="java.lang.Integer">
-      <column name="idPregunta"/>
-      <generator class="identity"/>
+      <column name="idPregunta"/>     
+          <generator class="sequence">
+          <param name="sequence">IDPREGUNTA_SEC</param>
+      </generator>
     </id>
     <many-to-one class="model.entities.Grupopreguntas" fetch="select" name="grupopreguntas">
       <column name="idGrupoPreguntas"/>

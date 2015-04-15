@@ -22,11 +22,14 @@ import model.Dao.EncuestadorDaoImpl;
 import model.Dao.EncuestadorDaoServiceImpl;
 import model.Dao.EvaluacionDaoImpl;
 import model.Dao.EvaluacionDaoServiceImpl;
+import model.Dao.GrupoPreguntasDaoImpl;
+import model.Dao.GrupoPreguntasDaoServiceImpl;
 import model.Dao.PlantillaDaoServiceImpl;
 import model.Dao.PreguntaDaoServiceImpl;
 import model.entities.Alternativas;
 import model.entities.Encuestador;
 import model.entities.Evaluacion;
+import model.entities.Grupopreguntas;
 import model.entities.Pregunta;
 
 /**
@@ -207,8 +210,10 @@ public class EvaluacionServlet extends HttpServlet {
         String textoPregunta = request.getParameter("textoPregunta");
         String tipoPregunta = request.getParameter("tipoPregunta");
         
+        
         EvaluacionDaoServiceImpl evaluacionDaoImpl = new EvaluacionDaoServiceImpl();
         PreguntaDaoServiceImpl preguntaDaoImpl = new PreguntaDaoServiceImpl();
+        GrupoPreguntasDaoServiceImpl grupoPreguntasDaoServiceImpl = new GrupoPreguntasDaoServiceImpl();
                 
         HttpSession session = request.getSession();
       
@@ -222,6 +227,16 @@ public class EvaluacionServlet extends HttpServlet {
         
         pregunta.setTextoPregunta(textoPregunta);
         pregunta.setTipoPregunta(tipoPregunta);
+        
+        
+        Grupopreguntas grupoPreguntas = new Grupopreguntas();
+        
+        grupoPreguntas.setDescripcionGrupo("Grupo 1");
+        
+        grupoPreguntasDaoServiceImpl.guardar(grupoPreguntas);
+        
+        pregunta.setGrupopreguntas(grupoPreguntas);
+        
         
         Set<Evaluacion> evaluacionesPregunta = pregunta.getEvaluacionpreguntases();
         
@@ -255,7 +270,7 @@ public class EvaluacionServlet extends HttpServlet {
         alternativas.setPregunta(pregunta);
         alternativas.setPuntaje(5);
         alternativas.setTextoAlternativa("Opcion 1");
-        alternativas.setSeleccionada(false);
+        
         
         pregunta.getAlternativases().add(alternativas);
         preguntaDaoImpl.guardar(pregunta);

@@ -2,10 +2,12 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="easytestdb" name="model.entities.Encuestador" table="encuestador">
+  <class catalog="easytest" name="model.entities.Encuestador" table="Encuestador">
     <id name="idEncuestador" type="int">
       <column name="idEncuestador"/>
-      <generator class="assigned"/>
+      <generator class="sequence">
+          <param name="sequence">IDENCUESTADOR_SEC</param>
+      </generator>
     </id>
     <property name="nombre" type="string">
       <column length="30" name="Nombre" not-null="true"/>

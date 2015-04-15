@@ -22,15 +22,15 @@
     <context:component-scan base-package="model.Dao"/>
     <context:component-scan base-package="controllers"/>
     <tx:annotation-driven transaction-manager="transactionManager"/>
-<!--
+
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
     <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-    <property name="username" value="chicureo"/>
-    <property name="password" value="chicureo"/>
+    <property name="username" value="easytest"/>
+    <property name="password" value="welcome1"/>
 </bean>
--->
 
+<!--
     <bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -38,7 +38,7 @@
         <property name="username" value="root" />
         <property name="password" value="7500" />
     </bean>
-
+-->
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
@@ -68,8 +68,8 @@
     
         <property name="hibernateProperties">
             <props>
-         <!--<prop key="hibernat<e.dialect">org.hibernate.dialect.Oracle10gDialect</prop>-->
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+         <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
          
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
@@ -90,6 +90,8 @@
     <bean id="EncuestadorDao" class="model.Dao.EncuestadorDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+
+
 
 
   

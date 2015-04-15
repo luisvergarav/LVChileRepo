@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 01-12-2014 01:13:16 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-  <class catalog="easytestdb" name="model.entities.Evaluacionpreguntas" table="evaluacionpreguntas">
+  <class catalog="easytest" name="model.entities.Evaluacionpreguntas" table="evaluacionpreguntas">
     <composite-id class="model.entities.EvaluacionpreguntasId" name="id">
       <key-property name="idPregunta" type="int">
         <column name="idPregunta"/>
