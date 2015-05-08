@@ -6,7 +6,7 @@
 package model.Dao;
 
 import java.util.List;
-import model.entities.Grupopreguntas;
+import model.Entities.Grupopreguntas;
 
 
 /**

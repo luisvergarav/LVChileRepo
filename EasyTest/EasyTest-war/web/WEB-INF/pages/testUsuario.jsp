@@ -1,9 +1,9 @@
-<%@page import="model.entities.Alternativas"%>
+<%@page import="model.Entities.Alternativas"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="java.util.Set"%>
-<%@page import="model.entities.Pregunta"%>
-<%@page import="model.entities.Encuestador"%>
-<%@page import="model.entities.Evaluacion"%>
+<%@page import="model.Entities.Pregunta"%>
+<%@page import="model.Entities.Encuestador"%>
+<%@page import="model.Entities.Evaluacion"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -40,21 +40,23 @@ Evaluacion evaluacion = (Evaluacion) request.getAttribute("evaluacion");
 <div id="bodyPan">
   
           <h1>Test</h1>
-          <%=evaluacion.getCabecera()%>
+          <h3><%=evaluacion.getCabecera()%></h3>
      
         <form action="TestServlet?action=guardarTest" method="POST">
             <table>
                 <tr>
                     <td>Id Evaluacion</td>
                     <td>
-                        <input type="text" name="idEvaluacion" value="<%=evaluacion.getIdEvaluacion()%>" />
+                        <input type="text" name="idEvaluacion" value="<%=evaluacion.getId()%>" />
                     </td>
                     <td></td>
             </tr>
-                
-                <%for(Pregunta pregunta:(Set<Pregunta>)evaluacion.getEvaluacionpreguntases()){%>                
             <tr>
-                <td><%=pregunta.getTextoPregunta()%></td>
+                <label>Responda</label>
+            </tr>   
+                <%for(Pregunta pregunta:(Set<Pregunta>)evaluacion.getEvapreguntases()){%>                
+            <tr>
+                <td><%=pregunta.getTextopregunta()%></td>
                 <td></td>                
             </tr>
                 <%int contador = 1;%>
@@ -63,11 +65,11 @@ Evaluacion evaluacion = (Evaluacion) request.getAttribute("evaluacion");
             <tr>
                 
                 <td>
-                    <c:if test="<%=pregunta.getTipoPregunta().equals("unica") %>">
-                    <input type="radio" name="pregunta-<%=pregunta.getIdPregunta()%>" value="<%=contador++%>" />
+                    <c:if test="<%=pregunta.getTipopregunta().equals("unica") %>">
+                    <input type="radio" name="pregunta-<%=pregunta.getId()%>" value="<%=alternativa.getIdalternativa()%>" />
                     </c:if>
-                    <c:if test="<%=pregunta.getTipoPregunta().equals("multiple") %>">
-                        <input type="checkbox" name="pregunta-<%=pregunta.getIdPregunta()%>" value="<%=contador++%>" />
+                    <c:if test="<%=pregunta.getTipopregunta().equals("multiple") %>">
+                        <input type="checkbox" name="pregunta-<%=pregunta.getId()%>-<%=alternativa.getIdalternativa()%>" value="<%=alternativa.getTextoAlternativa()%>" />
                     </c:if>
                 </td>
                 <td><%=alternativa.getTextoAlternativa()%></td>

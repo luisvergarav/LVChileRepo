@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-abr-2015 12:45:49 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Entities.Evapreguntas" table="EVAPREGUNTAS" schema="EASYTEST" optimistic-lock="version">
+        <composite-id name="id" class="model.Entities.EvapreguntasId">
+            <key-property name="preguntaId" type="java.lang.Integer">
+                <column name="PREGUNTA_ID" precision="22" scale="0" />
+            </key-property>
+            <key-property name="evaluacionId" type="java.lang.Integer">
+                <column name="EVALUACION_ID" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="evaluacion" class="model.Entities.Evaluacion" update="false" insert="false" fetch="select">
+            <column name="EVALUACION_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pregunta" class="model.Entities.Pregunta" update="false" insert="false" fetch="select">
+            <column name="PREGUNTA_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fechahora" type="date">
+            <column name="FECHAHORA" length="7" />
+        </property>
+        <set name="respuestas" table="RESPUESTA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EVAPREGUNTAS_PREGUNTA_ID" precision="22" scale="0" not-null="true" />
+                <column name="EVAPREGUNTAS_EVALUACION_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.Entities.Respuesta" />
+        </set>
+    </class>
+</hibernate-mapping>

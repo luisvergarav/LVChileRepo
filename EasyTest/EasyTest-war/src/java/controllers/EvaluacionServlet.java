@@ -26,11 +26,12 @@ import model.Dao.GrupoPreguntasDaoImpl;
 import model.Dao.GrupoPreguntasDaoServiceImpl;
 import model.Dao.PlantillaDaoServiceImpl;
 import model.Dao.PreguntaDaoServiceImpl;
-import model.entities.Alternativas;
-import model.entities.Encuestador;
-import model.entities.Evaluacion;
-import model.entities.Grupopreguntas;
-import model.entities.Pregunta;
+import model.Entities.Alternativas;
+import model.Entities.Encuestador;
+import model.Entities.Evaluacion;
+import model.Entities.Evapreguntas;
+import model.Entities.Grupopreguntas;
+import model.Entities.Pregunta;
 
 /**
  *
@@ -59,6 +60,7 @@ public class EvaluacionServlet extends HttpServlet {
         if (request.getParameter("action").equals("editar")) editarEvaluacion(request,response);
         if (request.getParameter("action").equals("guardarPregunta")) guardarPregunta(request,response);
         if (request.getParameter("action").equals("agregarAlternativa")) agregarAlternativa(request,response);
+        if (request.getParameter("action").equals("guardarAlternativa")) guardarAlternativa(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -116,6 +118,7 @@ public class EvaluacionServlet extends HttpServlet {
     
     request.setAttribute("evaluacion", evaluacion);
     request.setAttribute("listaPlantillas", plantillaDaoImpl.getAll());
+        System.out.println("Tamaño" + plantillaDaoImpl.getAll().size());
     
      RequestDispatcher rd =   request.getRequestDispatcher("/WEB-INF/pages/agregarEvaluacion.jsp");
         try {
@@ -144,7 +147,7 @@ public class EvaluacionServlet extends HttpServlet {
     private void listarEvaluacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           HttpSession session = request.getSession();
          Encuestador encuestador =  (Encuestador)  session.getAttribute("encuestador");
-        int idEncuestadorBuscado = encuestador.getIdEncuestador();
+        int idEncuestadorBuscado = encuestador.getIdencuestador();
                         
         
         Set<Evaluacion> listaEvaluaciones = encuestador.getEvaluacions();
@@ -165,6 +168,8 @@ public class EvaluacionServlet extends HttpServlet {
     String cabecera =        request.getParameter("cabecera");
     String piePagina =        request.getParameter("piePagina");
     String idEncuestador =        request.getParameter("idEncuestador");
+    String mensajeconfirmacion =        request.getParameter("mensajeconfirmacion");
+    String item =        request.getParameter("item");
     int idEncuestadorBuscado = Integer.parseInt(idEncuestador);
     int idPlantilla = Integer.parseInt(request.getParameter("idPlantilla"));
     
@@ -175,10 +180,11 @@ public class EvaluacionServlet extends HttpServlet {
     Evaluacion evaluacion = new Evaluacion();
     
     evaluacion.setCabecera(cabecera);
-    evaluacion.setPiePagina(piePagina);
+    evaluacion.setPiepagina(piePagina);
     evaluacion.setPlantilla(plantillaDaoImpl.getbyId(idPlantilla));
     evaluacion.setEncuestador(encuestador);
-
+    evaluacion.setItem(item);
+    evaluacion.setMensajeconfirmacion(mensajeconfirmacion);
     
     evaluacionDao.guardar(evaluacion);
     request.setAttribute("encuestador", encuestador);
@@ -225,22 +231,26 @@ public class EvaluacionServlet extends HttpServlet {
         
         Pregunta pregunta = new Pregunta();
         
-        pregunta.setTextoPregunta(textoPregunta);
-        pregunta.setTipoPregunta(tipoPregunta);
+        pregunta.setTextopregunta(textoPregunta);
+        pregunta.setTipopregunta(tipoPregunta);
         
         
         Grupopreguntas grupoPreguntas = new Grupopreguntas();
         
-        grupoPreguntas.setDescripcionGrupo("Grupo 1");
+        grupoPreguntas.setDescripciongrupo("Grupo 1");
         
         grupoPreguntasDaoServiceImpl.guardar(grupoPreguntas);
         
         pregunta.setGrupopreguntas(grupoPreguntas);
         
         
-        Set<Evaluacion> evaluacionesPregunta = pregunta.getEvaluacionpreguntases();
         
-        evaluacion.getEvaluacionpreguntases().add(pregunta);
+        
+        
+        
+        Set<Evaluacion> evaluacionesPregunta = pregunta.getEvapreguntases();
+        
+        evaluacion.getEvapreguntases().add(pregunta);
         
         evaluacionDaoImpl.guardar(evaluacion);
         
@@ -255,32 +265,68 @@ public class EvaluacionServlet extends HttpServlet {
         
                 
     }
-
+    
     private void agregarAlternativa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PreguntaDaoServiceImpl preguntaDaoImpl = new PreguntaDaoServiceImpl();
-        int idPregunta = Integer.parseInt(request.getParameter("idPregunta"));
-        
-        Pregunta pregunta = preguntaDaoImpl.getbyId(idPregunta);
         HttpSession session = request.getSession();
       
-        Evaluacion evaluacion =  (Evaluacion)      session.getAttribute("evaluacion");
+        int idPregunta = Integer.parseInt(request.getParameter("idPregunta"));
+      
+        Pregunta pregunta = preguntaDaoImpl.getbyId(idPregunta);
+                
         
-        Alternativas alternativas = new Alternativas();
-        alternativas.setCorrecta(true);
+      Alternativas alternativas = new Alternativas();
+
         alternativas.setPregunta(pregunta);
-        alternativas.setPuntaje(5);
-        alternativas.setTextoAlternativa("Opcion 1");
+    
+        request.setAttribute("alternativa",alternativas);
+         session.setAttribute("pregunta",pregunta);        
+
+         
+        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/pages/agregarAlternativa.jsp");
+                   
+        try {
+            rd.forward(request, response);
+        } catch (ServletException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void guardarAlternativa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
+        PreguntaDaoServiceImpl preguntaDaoImpl = new PreguntaDaoServiceImpl();
         
-        pregunta.getAlternativases().add(alternativas);
+        String texto = request.getParameter("textoAlternativa");
+        int puntaje = Integer.parseInt(request.getParameter("puntajeAlternativa"));
+        String correcta = request.getParameter("correctaAlternativa");
+        
+
+        HttpSession session = request.getSession();
+      Pregunta pregunta =  (Pregunta)      session.getAttribute("pregunta");
+        
+      Alternativas alternativas = new Alternativas();
+
+        alternativas.setCorrecta('T');        
+        alternativas.setPuntaje(puntaje);
+        alternativas.setPregunta(pregunta);
+        alternativas.setTextoAlternativa(texto);
+        
+        Set<Alternativas> alternativasPreguntas = pregunta.getAlternativases();
+        
+        alternativasPreguntas.add(alternativas);
         preguntaDaoImpl.guardar(pregunta);
         
-        pregunta = new Pregunta();
         
-                
-        request.setAttribute("pregunta", pregunta);
-         request.setAttribute("evaluacion", evaluacion);
+
+        
+       alternativas = new Alternativas();
+       alternativas.setPregunta(pregunta);
+       session.setAttribute("pregunta",pregunta);
+       
+         request.setAttribute("alternativa", alternativas);
          
-        request.getRequestDispatcher("/WEB-INF/pages/agregarPregunta.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/agregarAlternativa.jsp").forward(request, response);
     }
 }

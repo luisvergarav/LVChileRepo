@@ -8,9 +8,14 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,15 +30,19 @@ import model.Dao.EvaluacionDaoService;
 import model.Dao.EvaluacionDaoServiceImpl;
 import model.Dao.PlantillaDaoServiceImpl;
 import model.Dao.PreguntaDaoServiceImpl;
+import model.Dao.RespuestaDaoServiceImpl;
 import model.Dao.TestDaoImpl;
 import model.Dao.TestDaoServiceImpl;
-import model.entities.Alternativas;
-import model.entities.Encuestado;
-import model.entities.Encuestador;
-import model.entities.Evaluacion;
-import model.entities.Evaluacionpreguntas;
-import model.entities.Pregunta;
-import model.entities.Test;
+import model.Entities.Alternativas;
+import model.Entities.Encuestado;
+import model.Entities.Encuestador;
+import model.Entities.Evaluacion;
+import model.Entities.Evapreguntas;
+
+import model.Entities.Pregunta;
+import model.Entities.Respuesta;
+import model.Entities.RespuestaId;
+import model.Entities.Test;
 import org.springframework.web.servlet.tags.EvalTag;
 
 /**
@@ -125,33 +134,33 @@ public class TestServlet extends HttpServlet {
     TestDaoServiceImpl testDao = new TestDaoServiceImpl();
     EvaluacionDaoServiceImpl evaluacionDaoImpl = new EvaluacionDaoServiceImpl();
     PreguntaDaoServiceImpl preguntaDaoImpl = new PreguntaDaoServiceImpl();
-           
+    EncuestadoDaoServiceImp encuestadoDaoImpl = new EncuestadoDaoServiceImp();
+    RespuestaDaoServiceImpl respuestaDaoImpl = new RespuestaDaoServiceImpl();
+    
     String idEvaluacion =        request.getParameter("idEvaluacion");
-    int idEvaluacionBuscada = Integer.parseInt(idEvaluacion);
+    
+    
+    
     System.out.println(idEvaluacion);
     Enumeration enumParams = request.getParameterNames();
+    Set<String> idPreguntas = new HashSet<String>();
+    
     while(enumParams.hasMoreElements()){
         String paramKey = (String)enumParams.nextElement();
         System.out.println(paramKey);
-        if(paramKey.contains("pregunta-")){
-           
-            String paramValue = request.getParameter(paramKey); // obtenemos valor de la respuesta 1-2-3-4-5
-           
-            String[] paramValueArray = paramKey.split("-"); //obtenemos idPregunta
-           
-           int idPregunta = Integer.parseInt(paramValueArray[1]);
-           Pregunta pregunta = preguntaDaoImpl.getbyId(idPregunta); //obtenemos la pregunta
+        String[] paramValueArray = paramKey.split("-"); //obtenemos idPregunta   
+        if(paramKey.contains("pregunta-")) idPreguntas.add(paramValueArray[1]);
+    }
+   
+            //obtenemos la evaluacion
+           int idEvaluacionBuscada = Integer.parseInt(idEvaluacion);
            Evaluacion evaluacion = evaluacionDaoImpl.getbyId(idEvaluacionBuscada);
-           Evaluacionpreguntas evalPreguntas = new Evaluacionpreguntas();
            
            
            
-           Test nuevoTest = new Test();
-           evalPreguntas.setEvaluacion(evaluacion);
-           evalPreguntas.setPregunta(pregunta);
-           nuevoTest.setEvaluacionpreguntas(evalPreguntas);
-           nuevoTest.setRespuesta(paramValue.charAt(0));
+                    
            
+           //Creamos el encuestado
            Encuestado encuestado = new Encuestado();
            encuestado.setNombre("Luis");
            encuestado.setApellido("Vergara");
@@ -160,9 +169,45 @@ public class TestServlet extends HttpServlet {
            encuestado.setEmail("Luis@gmail.com");
            encuestado.setNivel("b");
            encuestado.setSexo("Masculino");
-           
-           nuevoTest.setEncuestado(encuestado);
+           encuestadoDaoImpl.guardar(encuestado);
+                   
+           //Creamos el Test
+           Test nuevoTest = new Test();      
+           nuevoTest.setEvaluacion(evaluacion);  
+           nuevoTest.setEncuestado(encuestado);//Tenemosel encuestado           
            testDao.guardar(nuevoTest);
+
+        for (String id  :idPreguntas) {
+                      
+            int idPregunta = Integer.parseInt(id);            
+      
+            Pregunta pregunta = preguntaDaoImpl.getbyId(idPregunta); //obtenemos la pregunta     
+ 
+           //Creamos la respuesta
+           Respuesta respuesta = new Respuesta(); //Tenemos respuesta
+           
+           enumParams = request.getParameterNames();
+           while(enumParams.hasMoreElements()){
+                String paramKey = (String)enumParams.nextElement();
+                System.out.println(paramKey);
+                // obtenemos la pregunta
+                 String paramValue = request.getParameter(paramKey);            
+                 if(paramKey.contains("pregunta-")){
+                    String[] paramValueArray = paramKey.split("-"); //obtenemos idPregunta   
+                    if (paramValueArray[1].equals(id)) respuesta.setRespuesta(paramValue.concat(","));
+                 }
+           }
+           //Creamos id respuesta
+           RespuestaId respuestaId = new RespuestaId();
+           
+           
+           respuestaId.setEvapreguntasPreguntaId(pregunta.getId());
+           respuestaId.setEvapreguntasEvaluacionId(evaluacion.getId());
+           respuestaId.setTestIdtest(nuevoTest.getIdtest());
+           
+           respuesta.setId(respuestaId);
+           
+           respuestaDaoImpl.guardar(respuesta);
            
            
         }
@@ -170,6 +215,5 @@ public class TestServlet extends HttpServlet {
     }
     
 
-        
-    }
+
 }

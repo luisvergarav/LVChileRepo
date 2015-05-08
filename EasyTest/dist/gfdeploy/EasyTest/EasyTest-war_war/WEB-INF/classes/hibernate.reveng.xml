@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="easyTestDb"/>
-  <table-filter match-name="encuestador"/>
-  <table-filter match-name="test"/>
-  <table-filter match-name="evaluacionpreguntas"/>
-  <table-filter match-name="evaluacion"/>
-  <table-filter match-name="plantilla"/>
-  <table-filter match-name="grupopreguntas"/>
-  <table-filter match-name="alternativas"/>
-  <table-filter match-name="pregunta"/>
-  <table-filter match-name="encuestado"/>
+  <schema-selection/>
 </hibernate-reverse-engineering>

@@ -9,9 +9,9 @@ package model.Dao;
 import java.util.ArrayList;
 import java.util.List;
 import model.db.NewHibernateUtil;
-import model.entities.Encuestado;
-import model.entities.Evaluacion;
-import model.entities.Test;
+import model.Entities.Encuestado;
+import model.Entities.Evaluacion;
+import model.Entities.Test;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -75,7 +75,7 @@ public class TestDaoImpl implements TestDao{
             session.saveOrUpdate(test);
             trx.commit();
             }catch(HibernateException e){
-			
+		e.printStackTrace();
 		}finally{
 			session.close();
 		}

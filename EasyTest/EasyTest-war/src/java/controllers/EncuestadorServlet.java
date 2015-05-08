@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Dao.EncuestadorDaoImpl;
 import model.Dao.EncuestadorDaoServiceImpl;
-import model.entities.Encuestador;
+import model.Entities.Encuestador;
 
 /**
  *
@@ -78,7 +78,7 @@ public class EncuestadorServlet extends HttpServlet {
     }// </editor-fold>
 
     private void guardarEncuestador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idEncuestador = request.getParameter("idEncuestador") == null?"0":request.getParameter("idEncuestador");        
+        
         String nombre = request.getParameter("nombre");
         String rut = request.getParameter("rut");
         String apellido = request.getParameter("apellido");
@@ -87,13 +87,11 @@ public class EncuestadorServlet extends HttpServlet {
         String email = request.getParameter("email");
         
         
-        int idEncuestadorBuscado = Integer.parseInt(idEncuestador);
-        
         EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
         
         Encuestador encuestador = new Encuestador();
         
-        encuestador.setIdEncuestador(idEncuestadorBuscado);
+        
         encuestador.setRut(rut);
         encuestador.setContrasena(contrasena);
         encuestador.setEmail(email);

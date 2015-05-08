@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28-abr-2015 16:50:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Entities.Respuesta" table="RESPUESTA" schema="EASYTEST" optimistic-lock="version">
+        <composite-id name="id" class="model.Entities.RespuestaId">
+            <key-property name="testIdtest" type="java.lang.Integer">
+                <column name="TEST_IDTEST" precision="22" scale="0" />
+            </key-property>
+            <key-property name="evapreguntasPreguntaId" type="java.lang.Integer">
+                <column name="EVAPREGUNTAS_PREGUNTA_ID" precision="22" scale="0" />
+            </key-property>
+            <key-property name="evapreguntasEvaluacionId" type="java.lang.Integer">
+                <column name="EVAPREGUNTAS_EVALUACION_ID" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="evapreguntas" class="model.Entities.Evapreguntas" update="false" insert="false" fetch="select">
+            <column name="EVAPREGUNTAS_PREGUNTA_ID" precision="22" scale="0" not-null="true" />
+            <column name="EVAPREGUNTAS_EVALUACION_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="test" class="model.Entities.Test" update="false" insert="false" fetch="select">
+            <column name="TEST_IDTEST" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="respuesta" type="string">
+            <column name="RESPUESTA" length="40" />
+        </property>
+    </class>
+</hibernate-mapping>

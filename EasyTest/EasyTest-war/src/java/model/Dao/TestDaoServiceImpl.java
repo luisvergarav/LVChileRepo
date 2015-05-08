@@ -6,8 +6,8 @@
 package model.Dao;
 
 import java.util.List;
-import model.entities.Test;
-import model.entities.Encuestador;
+import model.Entities.Test;
+import model.Entities.Encuestador;
 
 /**
  *
