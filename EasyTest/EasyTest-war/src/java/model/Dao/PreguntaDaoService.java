@@ -5,7 +5,7 @@
 package model.Dao;
 
 import java.util.List;
-import model.Entities.Pregunta;
+import model.entities.Pregunta;
 
 /**
  *

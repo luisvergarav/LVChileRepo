@@ -5,8 +5,8 @@
  */
 package model.Dao;
 
-import model.Entities.Respuesta;
-import model.Entities.Test;
+import model.entities.Respuesta;
+import model.entities.Test;
 import model.db.NewHibernateUtil;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

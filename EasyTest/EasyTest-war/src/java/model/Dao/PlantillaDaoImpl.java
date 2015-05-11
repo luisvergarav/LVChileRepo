@@ -10,7 +10,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import model.db.NewHibernateUtil;
-import model.Entities.Plantilla;
+import model.entities.Plantilla;
 
 /**
  *
