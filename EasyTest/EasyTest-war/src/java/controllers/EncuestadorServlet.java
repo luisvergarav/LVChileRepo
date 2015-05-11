@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Dao.EncuestadorDaoImpl;
 import model.Dao.EncuestadorDaoServiceImpl;
-import model.Entities.Encuestador;
+import model.entities.Encuestador;
 
 /**
  *

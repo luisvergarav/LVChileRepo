@@ -26,12 +26,12 @@ import model.Dao.GrupoPreguntasDaoImpl;
 import model.Dao.GrupoPreguntasDaoServiceImpl;
 import model.Dao.PlantillaDaoServiceImpl;
 import model.Dao.PreguntaDaoServiceImpl;
-import model.Entities.Alternativas;
-import model.Entities.Encuestador;
-import model.Entities.Evaluacion;
-import model.Entities.Evapreguntas;
-import model.Entities.Grupopreguntas;
-import model.Entities.Pregunta;
+import model.entities.Alternativas;
+import model.entities.Encuestador;
+import model.entities.Evaluacion;
+import model.entities.Evapreguntas;
+import model.entities.Grupopreguntas;
+import model.entities.Pregunta;
 
 /**
  *
@@ -147,7 +147,7 @@ public class EvaluacionServlet extends HttpServlet {
     private void listarEvaluacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           HttpSession session = request.getSession();
          Encuestador encuestador =  (Encuestador)  session.getAttribute("encuestador");
-        int idEncuestadorBuscado = encuestador.getIdencuestador();
+        int idEncuestadorBuscado = encuestador.getIdEncuestador();
                         
         
         Set<Evaluacion> listaEvaluaciones = encuestador.getEvaluacions();
@@ -180,11 +180,11 @@ public class EvaluacionServlet extends HttpServlet {
     Evaluacion evaluacion = new Evaluacion();
     
     evaluacion.setCabecera(cabecera);
-    evaluacion.setPiepagina(piePagina);
+    evaluacion.setPiePagina(piePagina);
     evaluacion.setPlantilla(plantillaDaoImpl.getbyId(idPlantilla));
     evaluacion.setEncuestador(encuestador);
     evaluacion.setItem(item);
-    evaluacion.setMensajeconfirmacion(mensajeconfirmacion);
+    evaluacion.setMensajeConfirmacion(mensajeconfirmacion);
     
     evaluacionDao.guardar(evaluacion);
     request.setAttribute("encuestador", encuestador);
@@ -231,13 +231,13 @@ public class EvaluacionServlet extends HttpServlet {
         
         Pregunta pregunta = new Pregunta();
         
-        pregunta.setTextopregunta(textoPregunta);
-        pregunta.setTipopregunta(tipoPregunta);
+        pregunta.setTextoPregunta(textoPregunta);
+        pregunta.setTipoPregunta(tipoPregunta);
         
         
         Grupopreguntas grupoPreguntas = new Grupopreguntas();
         
-        grupoPreguntas.setDescripciongrupo("Grupo 1");
+        grupoPreguntas.setDescripcionGrupo("Grupo 1");
         
         grupoPreguntasDaoServiceImpl.guardar(grupoPreguntas);
         

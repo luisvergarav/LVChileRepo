@@ -33,16 +33,16 @@ import model.Dao.PreguntaDaoServiceImpl;
 import model.Dao.RespuestaDaoServiceImpl;
 import model.Dao.TestDaoImpl;
 import model.Dao.TestDaoServiceImpl;
-import model.Entities.Alternativas;
-import model.Entities.Encuestado;
-import model.Entities.Encuestador;
-import model.Entities.Evaluacion;
-import model.Entities.Evapreguntas;
+import model.entities.Alternativas;
+import model.entities.Encuestado;
+import model.entities.Encuestador;
+import model.entities.Evaluacion;
+import model.entities.Evapreguntas;
 
-import model.Entities.Pregunta;
-import model.Entities.Respuesta;
-import model.Entities.RespuestaId;
-import model.Entities.Test;
+import model.entities.Pregunta;
+import model.entities.Respuesta;
+import model.entities.RespuestaId;
+import model.entities.Test;
 import org.springframework.web.servlet.tags.EvalTag;
 
 /**
