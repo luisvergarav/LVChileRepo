@@ -1,5 +1,5 @@
 package model.entities;
-// Generated 27-abr-2015 12:45:47 by Hibernate Tools 4.3.1
+// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,7 +16,8 @@ public class Evapreguntas  implements java.io.Serializable {
      private Evaluacion evaluacion;
      private Pregunta pregunta;
      private Date fechahora;
-private Set respuestas = new HashSet(0);
+     private Set respuestas = new HashSet(0);
+
     public Evapreguntas() {
     }
 
@@ -26,22 +27,14 @@ private Set respuestas = new HashSet(0);
         this.evaluacion = evaluacion;
         this.pregunta = pregunta;
     }
-    public Evapreguntas(EvapreguntasId id, Evaluacion evaluacion, Pregunta pregunta, Date fechahora) {
+    public Evapreguntas(EvapreguntasId id, Evaluacion evaluacion, Pregunta pregunta, Date fechahora, Set respuestas) {
        this.id = id;
        this.evaluacion = evaluacion;
        this.pregunta = pregunta;
        this.fechahora = fechahora;
+       this.respuestas = respuestas;
     }
    
-    
-        public Set getRespuestas() {
-        return this.respuestas;
-    }
-    
-    public void setRespuestas(Set respuestas) {
-        this.respuestas = respuestas;
-    }
-
     public EvapreguntasId getId() {
         return this.id;
     }
@@ -69,6 +62,13 @@ private Set respuestas = new HashSet(0);
     
     public void setFechahora(Date fechahora) {
         this.fechahora = fechahora;
+    }
+    public Set getRespuestas() {
+        return this.respuestas;
+    }
+    
+    public void setRespuestas(Set respuestas) {
+        this.respuestas = respuestas;
     }
 
 
