@@ -1,7 +1,8 @@
 package model.entities;
-// Generated 01-12-2014 01:13:15 AM by Hibernate Tools 3.2.1.GA
+// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,48 +12,47 @@ import java.util.Set;
 public class Evaluacion  implements java.io.Serializable {
 
 
-     private Integer idEvaluacion;
-     private Encuestador encuestador;
+     private Integer id;
      private Plantilla plantilla;
+     private Encuestador encuestador;
      private String item;
      private String cabecera;
-     private String mensajeConfirmacion;
-     private String piePagina;
-     private Set evaluacionpreguntases = new HashSet(0);
+     private String mensajeconfirmacion;
+     private String piepagina;
+     private Set evapreguntases = new HashSet(0);
+     private Set tests = new HashSet(0);
 
     public Evaluacion() {
     }
 
 	
-    public Evaluacion(Encuestador encuestador, Plantilla plantilla, String cabecera, String piePagina) {
-        this.encuestador = encuestador;
+    public Evaluacion(Integer id, Plantilla plantilla, Encuestador encuestador, String item, String cabecera, String mensajeconfirmacion, String piepagina) {
+        this.id = id;
         this.plantilla = plantilla;
+        this.encuestador = encuestador;
+        this.item = item;
         this.cabecera = cabecera;
-        this.piePagina = piePagina;
+        this.mensajeconfirmacion = mensajeconfirmacion;
+        this.piepagina = piepagina;
     }
-    public Evaluacion(Encuestador encuestador, Plantilla plantilla, String item, String cabecera, String mensajeConfirmacion, String piePagina, Set evaluacionpreguntases) {
-       this.encuestador = encuestador;
+    public Evaluacion(Integer id, Plantilla plantilla, Encuestador encuestador, String item, String cabecera, String mensajeconfirmacion, String piepagina, Set evapreguntases, Set tests) {
+       this.id = id;
        this.plantilla = plantilla;
+       this.encuestador = encuestador;
        this.item = item;
        this.cabecera = cabecera;
-       this.mensajeConfirmacion = mensajeConfirmacion;
-       this.piePagina = piePagina;
-       this.evaluacionpreguntases = evaluacionpreguntases;
+       this.mensajeconfirmacion = mensajeconfirmacion;
+       this.piepagina = piepagina;
+       this.evapreguntases = evapreguntases;
+       this.tests = tests;
     }
    
-    public Integer getIdEvaluacion() {
-        return this.idEvaluacion;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdEvaluacion(Integer idEvaluacion) {
-        this.idEvaluacion = idEvaluacion;
-    }
-    public Encuestador getEncuestador() {
-        return this.encuestador;
-    }
-    
-    public void setEncuestador(Encuestador encuestador) {
-        this.encuestador = encuestador;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public Plantilla getPlantilla() {
         return this.plantilla;
@@ -60,6 +60,13 @@ public class Evaluacion  implements java.io.Serializable {
     
     public void setPlantilla(Plantilla plantilla) {
         this.plantilla = plantilla;
+    }
+    public Encuestador getEncuestador() {
+        return this.encuestador;
+    }
+    
+    public void setEncuestador(Encuestador encuestador) {
+        this.encuestador = encuestador;
     }
     public String getItem() {
         return this.item;
@@ -75,26 +82,33 @@ public class Evaluacion  implements java.io.Serializable {
     public void setCabecera(String cabecera) {
         this.cabecera = cabecera;
     }
-    public String getMensajeConfirmacion() {
-        return this.mensajeConfirmacion;
+    public String getMensajeconfirmacion() {
+        return this.mensajeconfirmacion;
     }
     
-    public void setMensajeConfirmacion(String mensajeConfirmacion) {
-        this.mensajeConfirmacion = mensajeConfirmacion;
+    public void setMensajeconfirmacion(String mensajeconfirmacion) {
+        this.mensajeconfirmacion = mensajeconfirmacion;
     }
-    public String getPiePagina() {
-        return this.piePagina;
-    }
-    
-    public void setPiePagina(String piePagina) {
-        this.piePagina = piePagina;
-    }
-    public Set getEvaluacionpreguntases() {
-        return this.evaluacionpreguntases;
+    public String getPiepagina() {
+        return this.piepagina;
     }
     
-    public void setEvaluacionpreguntases(Set evaluacionpreguntases) {
-        this.evaluacionpreguntases = evaluacionpreguntases;
+    public void setPiepagina(String piepagina) {
+        this.piepagina = piepagina;
+    }
+    public Set getEvapreguntases() {
+        return this.evapreguntases;
+    }
+    
+    public void setEvapreguntases(Set evapreguntases) {
+        this.evapreguntases = evapreguntases;
+    }
+    public Set getTests() {
+        return this.tests;
+    }
+    
+    public void setTests(Set tests) {
+        this.tests = tests;
     }
 
 

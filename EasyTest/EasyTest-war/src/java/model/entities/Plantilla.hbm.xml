@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="easytest" name="model.entities.Plantilla" table="plantilla">
-    <id name="idPlantilla" type="int">
-      <column name="idPlantilla"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="model.entities.Encuestador" fetch="select" name="encuestador">
-      <column name="idEncuestador"/>
-    </many-to-one>
-    <property name="tipo" type="string">
-      <column length="20" name="tipo" not-null="true"/>
-    </property>
-    <property name="descripcion" type="string">
-      <column length="100" name="descripcion" not-null="true"/>
-    </property>
-    <set inverse="true" name="evaluacions">
-      <key>
-        <column name="idPlantilla" not-null="true"/>
-      </key>
-      <one-to-many class="model.entities.Evaluacion"/>
-    </set>
-  </class>
+    <class name="model.entities.Plantilla" table="PLANTILLA" schema="EASYTEST" optimistic-lock="version">
+        <id name="idplantilla" type="java.lang.Integer">
+            <column name="IDPLANTILLA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="encuestador" class="model.entities.Encuestador" fetch="select">
+            <column name="IDENCUESTADOR" precision="22" scale="0" />
+        </many-to-one>
+        <property name="tipo" type="string">
+            <column name="TIPO" length="20" not-null="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="100" not-null="true" />
+        </property>
+        <set name="evaluacions" table="EVALUACION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PLANTILLA_IDPLANTILLA" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.entities.Evaluacion" />
+        </set>
+    </class>
 </hibernate-mapping>

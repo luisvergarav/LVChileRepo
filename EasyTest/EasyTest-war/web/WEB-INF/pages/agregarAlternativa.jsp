@@ -1,9 +1,9 @@
 
-<%@page import="model.Entities.Alternativas"%>
+<%@page import="model.entities.Alternativas"%>
 <%@page import="java.util.Set"%>
-<%@page import="model.Entities.Pregunta"%>
-<%@page import="model.Entities.Encuestador"%>
-<%@page import="model.Entities.Evaluacion"%>
+<%@page import="model.entities.Pregunta"%>
+<%@page import="model.entities.Encuestador"%>
+<%@page import="model.entities.Evaluacion"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -34,7 +34,7 @@ Alternativas alternativa = (Alternativas) request.getAttribute("alternativa");
             <tr>
                 <td>Texto</td>
                 <td>
-            <input type="text" name="textoAlternativa" value="<%=alternativa.getTextoAlternativa()%>" />
+            <input type="text" name="textoAlternativa" value="<%=alternativa.getTextoalternativa()%>" />
                 </td>
             </tr>
             <tr>
@@ -72,7 +72,7 @@ Alternativas alternativa = (Alternativas) request.getAttribute("alternativa");
 			<tr>
                             
                             <td>
-			<%=alternativas1.getTextoAlternativa()%>
+			<%=alternativas1.getTextoalternativa()%>
 			</td>
 			<td>
 			<%=alternativas1.getCorrecta()%>

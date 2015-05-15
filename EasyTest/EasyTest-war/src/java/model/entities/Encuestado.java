@@ -1,7 +1,8 @@
 package model.entities;
-// Generated 23-11-2014 11:31:32 PM by Hibernate Tools 3.2.1.GA
+// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Encuestado  implements java.io.Serializable {
 
 
-     private int idEncuestado;
+     private Integer idenc;
      private String apellido;
      private String nombre;
      private String curso;
@@ -25,13 +26,13 @@ public class Encuestado  implements java.io.Serializable {
     }
 
 	
-    public Encuestado(int idEncuestado, String apellido, String nombre) {
-        this.idEncuestado = idEncuestado;
+    public Encuestado(Integer idenc, String apellido, String nombre) {
+        this.idenc = idenc;
         this.apellido = apellido;
         this.nombre = nombre;
     }
-    public Encuestado(int idEncuestado, String apellido, String nombre, String curso, String sexo, String email, String nivel, String colegio, Set tests) {
-       this.idEncuestado = idEncuestado;
+    public Encuestado(Integer idenc, String apellido, String nombre, String curso, String sexo, String email, String nivel, String colegio, Set tests) {
+       this.idenc = idenc;
        this.apellido = apellido;
        this.nombre = nombre;
        this.curso = curso;
@@ -42,12 +43,12 @@ public class Encuestado  implements java.io.Serializable {
        this.tests = tests;
     }
    
-    public int getIdEncuestado() {
-        return this.idEncuestado;
+    public Integer getIdenc() {
+        return this.idenc;
     }
     
-    public void setIdEncuestado(int idEncuestado) {
-        this.idEncuestado = idEncuestado;
+    public void setIdenc(Integer idenc) {
+        this.idenc = idenc;
     }
     public String getApellido() {
         return this.apellido;

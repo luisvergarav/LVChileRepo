@@ -1,25 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="easytest" name="model.entities.Test" table="test">
-    <composite-id class="model.entities.TestId" name="id">
-      <key-property name="idEncuestado" type="int">
-        <column name="idEncuestado"/>
-      </key-property>
-      <key-property name="idTest" type="int">
-        <column name="idTest"/>
-      </key-property>
-    </composite-id>
-    <many-to-one class="model.entities.Evaluacionpreguntas" fetch="select" name="evaluacionpreguntas">
-      <column name="idPregunta" not-null="true"/>
-      <column name="idEvaluacion" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="model.entities.Encuestado" fetch="select" insert="false" name="encuestado" update="false">
-      <column name="idEncuestado" not-null="true"/>
-    </many-to-one>
-    <property name="respuesta" type="char">
-      <column length="1" name="respuesta" not-null="true"/>
-    </property>
-  </class>
+    <class name="model.entities.Test" table="TEST" schema="EASYTEST" optimistic-lock="version">
+        <id name="idtest" type="java.lang.Integer">
+            <column name="IDTEST" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">IDTEST_SEC</param>
+            </generator>
+        </id>
+        <many-to-one name="evaluacion" class="model.entities.Evaluacion" fetch="select">
+            <column name="EVALUACION_IDEVALUACION" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="encuestado" class="model.entities.Encuestado" fetch="select">
+            <column name="ENCUESTADO_IDENC" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <set name="respuestas" table="RESPUESTA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TEST_IDTEST" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.entities.Respuesta" />
+        </set>
+    </class>
 </hibernate-mapping>

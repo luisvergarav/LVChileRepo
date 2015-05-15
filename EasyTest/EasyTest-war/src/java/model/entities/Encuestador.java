@@ -1,7 +1,8 @@
 package model.entities;
-// Generated 23-11-2014 11:31:32 PM by Hibernate Tools 3.2.1.GA
+// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,54 +12,49 @@ import java.util.Set;
 public class Encuestador  implements java.io.Serializable {
 
 
-     private int idEncuestador;
+     private Integer idencuestador;
      private String nombre;
-     private String rut;
      private String apellido;
      private String nick;
      private String contrasena;
      private String email;
-     private Set plantillas = new HashSet(0);
+     private String rut;
      private Set evaluacions = new HashSet(0);
+     private Set plantillas = new HashSet(0);
+     private Set roleses = new HashSet(0);
 
     public Encuestador() {
     }
 
-    public String getRut() {
-        return rut;
-    }
-
-    public void setRut(String rut) {
-        this.rut = rut;
-    }
-
-    
 	
-    public Encuestador(int idEncuestador, String nombre, String apellido, String nick, String contrasena, String email) {
-        this.idEncuestador = idEncuestador;
+    public Encuestador(Integer idencuestador, String nombre, String apellido, String nick, String contrasena, String email, String rut) {
+        this.idencuestador = idencuestador;
         this.nombre = nombre;
         this.apellido = apellido;
         this.nick = nick;
         this.contrasena = contrasena;
         this.email = email;
+        this.rut = rut;
     }
-    public Encuestador(int idEncuestador, String nombre, String apellido, String nick, String contrasena, String email, Set plantillas, Set evaluacions) {
-       this.idEncuestador = idEncuestador;
+    public Encuestador(Integer idencuestador, String nombre, String apellido, String nick, String contrasena, String email, String rut, Set evaluacions, Set plantillas, Set roleses) {
+       this.idencuestador = idencuestador;
        this.nombre = nombre;
        this.apellido = apellido;
        this.nick = nick;
        this.contrasena = contrasena;
        this.email = email;
-       this.plantillas = plantillas;
+       this.rut = rut;
        this.evaluacions = evaluacions;
+       this.plantillas = plantillas;
+       this.roleses = roleses;
     }
    
-    public int getIdEncuestador() {
-        return this.idEncuestador;
+    public Integer getIdencuestador() {
+        return this.idencuestador;
     }
     
-    public void setIdEncuestador(int idEncuestador) {
-        this.idEncuestador = idEncuestador;
+    public void setIdencuestador(Integer idencuestador) {
+        this.idencuestador = idencuestador;
     }
     public String getNombre() {
         return this.nombre;
@@ -95,12 +91,12 @@ public class Encuestador  implements java.io.Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    public Set getPlantillas() {
-        return this.plantillas;
+    public String getRut() {
+        return this.rut;
     }
     
-    public void setPlantillas(Set plantillas) {
-        this.plantillas = plantillas;
+    public void setRut(String rut) {
+        this.rut = rut;
     }
     public Set getEvaluacions() {
         return this.evaluacions;
@@ -108,6 +104,20 @@ public class Encuestador  implements java.io.Serializable {
     
     public void setEvaluacions(Set evaluacions) {
         this.evaluacions = evaluacions;
+    }
+    public Set getPlantillas() {
+        return this.plantillas;
+    }
+    
+    public void setPlantillas(Set plantillas) {
+        this.plantillas = plantillas;
+    }
+    public Set getRoleses() {
+        return this.roleses;
+    }
+    
+    public void setRoleses(Set roleses) {
+        this.roleses = roleses;
     }
 
 

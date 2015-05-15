@@ -1,7 +1,8 @@
 package model.entities;
-// Generated 01-12-2014 01:13:15 AM by Hibernate Tools 3.2.1.GA
+// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,37 +12,41 @@ import java.util.Set;
 public class Pregunta  implements java.io.Serializable {
 
 
-     private Integer idPregunta;
+     private Integer id;
      private Grupopreguntas grupopreguntas;
-     private String textoPregunta;
-     private String tipoPregunta;
-     private Boolean obligatorio;
-     private Set evaluacionpreguntases = new HashSet(0);
+     private String textopregunta;
+     private String tipopregunta;
+     private char obligatorio;
+     private Set evapreguntases = new HashSet(0);
      private Set alternativases = new HashSet(0);
 
     public Pregunta() {
     }
 
 	
-    public Pregunta(String textoPregunta, String tipoPregunta) {
-        this.textoPregunta = textoPregunta;
-        this.tipoPregunta = tipoPregunta;
+    public Pregunta(Integer id, Grupopreguntas grupopreguntas, String textopregunta, String tipopregunta, char obligatorio) {
+        this.id = id;
+        this.grupopreguntas = grupopreguntas;
+        this.textopregunta = textopregunta;
+        this.tipopregunta = tipopregunta;
+        this.obligatorio = obligatorio;
     }
-    public Pregunta(Grupopreguntas grupopreguntas, String textoPregunta, String tipoPregunta, Boolean obligatorio, Set evaluacionpreguntases, Set alternativases) {
+    public Pregunta(Integer id, Grupopreguntas grupopreguntas, String textopregunta, String tipopregunta, char obligatorio, Set evapreguntases, Set alternativases) {
+       this.id = id;
        this.grupopreguntas = grupopreguntas;
-       this.textoPregunta = textoPregunta;
-       this.tipoPregunta = tipoPregunta;
+       this.textopregunta = textopregunta;
+       this.tipopregunta = tipopregunta;
        this.obligatorio = obligatorio;
-       this.evaluacionpreguntases = evaluacionpreguntases;
+       this.evapreguntases = evapreguntases;
        this.alternativases = alternativases;
     }
    
-    public Integer getIdPregunta() {
-        return this.idPregunta;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdPregunta(Integer idPregunta) {
-        this.idPregunta = idPregunta;
+    public void setId(Integer id) {
+        this.id = id;
     }
     public Grupopreguntas getGrupopreguntas() {
         return this.grupopreguntas;
@@ -50,33 +55,33 @@ public class Pregunta  implements java.io.Serializable {
     public void setGrupopreguntas(Grupopreguntas grupopreguntas) {
         this.grupopreguntas = grupopreguntas;
     }
-    public String getTextoPregunta() {
-        return this.textoPregunta;
+    public String getTextopregunta() {
+        return this.textopregunta;
     }
     
-    public void setTextoPregunta(String textoPregunta) {
-        this.textoPregunta = textoPregunta;
+    public void setTextopregunta(String textopregunta) {
+        this.textopregunta = textopregunta;
     }
-    public String getTipoPregunta() {
-        return this.tipoPregunta;
+    public String getTipopregunta() {
+        return this.tipopregunta;
     }
     
-    public void setTipoPregunta(String tipoPregunta) {
-        this.tipoPregunta = tipoPregunta;
+    public void setTipopregunta(String tipopregunta) {
+        this.tipopregunta = tipopregunta;
     }
-    public Boolean getObligatorio() {
+    public char getObligatorio() {
         return this.obligatorio;
     }
     
-    public void setObligatorio(Boolean obligatorio) {
+    public void setObligatorio(char obligatorio) {
         this.obligatorio = obligatorio;
     }
-    public Set getEvaluacionpreguntases() {
-        return this.evaluacionpreguntases;
+    public Set getEvapreguntases() {
+        return this.evapreguntases;
     }
     
-    public void setEvaluacionpreguntases(Set evaluacionpreguntases) {
-        this.evaluacionpreguntases = evaluacionpreguntases;
+    public void setEvapreguntases(Set evapreguntases) {
+        this.evapreguntases = evapreguntases;
     }
     public Set getAlternativases() {
         return this.alternativases;

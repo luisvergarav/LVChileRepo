@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@page import="java.util.Set"%>
-<%@page import="model.Entities.Pregunta"%>
-<%@page import="model.Entities.Encuestador"%>
-<%@page import="model.Entities.Evaluacion"%>
+<%@page import="model.entities.Pregunta"%>
+<%@page import="model.entities.Encuestador"%>
+<%@page import="model.entities.Evaluacion"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
@@ -138,10 +138,10 @@
                                     <input type="radio" name="pregunta-${pregunta1.getId()}" value="${alternativa.getIdalternativa()}" />
                                 </c:if>
                                 <c:if test="${pregunta1.getTipopregunta() == 'multiple'}">
-                                    <input type="checkbox" name="pregunta-${pregunta1.getId()}-${alternativa.getIdalternativa()}" value="${alternativa.getTextoAlternativa()}" />
+                                    <input type="checkbox" name="pregunta-${pregunta1.getId()}-${alternativa.getIdalternativa()}" value="${alternativa.getTextoalternativa()}" />
                                 </c:if>
                             </td>
-                            <td>${alternativa.getTextoAlternativa()}</td>
+                            <td>${alternativa.getTextoalternativa()}</td>
                             <c:if test="${alternativa.getCorrecta() == 'T'}" >
                             <td>*</td>
                             </c:if>

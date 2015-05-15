@@ -1,38 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="easytest" name="model.entities.Encuestado" table="encuestado">
-    <id name="idEncuestado" type="int">
-      <column name="idEncuestado"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="apellido" type="string">
-      <column length="40" name="apellido" not-null="true"/>
-    </property>
-    <property name="nombre" type="string">
-      <column length="40" name="nombre" not-null="true"/>
-    </property>
-    <property name="curso" type="string">
-      <column length="40" name="curso"/>
-    </property>
-    <property name="sexo" type="string">
-      <column length="40" name="sexo"/>
-    </property>
-    <property name="email" type="string">
-      <column length="40" name="email"/>
-    </property>
-    <property name="nivel" type="string">
-      <column length="40" name="nivel"/>
-    </property>
-    <property name="colegio" type="string">
-      <column length="40" name="colegio"/>
-    </property>
-    <set inverse="true" name="tests">
-      <key>
-        <column name="idEncuestado" not-null="true"/>
-      </key>
-      <one-to-many class="model.entities.Test"/>
-    </set>
-  </class>
+    <class name="model.entities.Encuestado" table="ENCUESTADO" schema="EASYTEST" optimistic-lock="version">
+        <id name="idenc" type="java.lang.Integer">
+            <column name="IDENC" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">IDENCUESTADO_SEC</param>
+            </generator>
+        </id>
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="40" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="40" not-null="true" />
+        </property>
+        <property name="curso" type="string">
+            <column name="CURSO" length="40" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="SEXO" length="40" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" length="40" />
+        </property>
+        <property name="nivel" type="string">
+            <column name="NIVEL" length="40" />
+        </property>
+        <property name="colegio" type="string">
+            <column name="COLEGIO" length="40" />
+        </property>
+        <set name="tests" table="TEST" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ENCUESTADO_IDENC" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.entities.Test" />
+        </set>
+    </class>
 </hibernate-mapping>

@@ -1,7 +1,8 @@
 package model.entities;
-// Generated 23-11-2014 11:31:32 PM by Hibernate Tools 3.2.1.GA
+// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,37 +12,37 @@ import java.util.Set;
 public class Grupopreguntas  implements java.io.Serializable {
 
 
-     private int idGrupoPreguntas;
-     private String descripcionGrupo;
+     private Integer id;
+     private String descripciongrupo;
      private Set preguntas = new HashSet(0);
 
     public Grupopreguntas() {
     }
 
 	
-    public Grupopreguntas(int idGrupoPreguntas, String descripcionGrupo) {
-        this.idGrupoPreguntas = idGrupoPreguntas;
-        this.descripcionGrupo = descripcionGrupo;
+    public Grupopreguntas(Integer id, String descripciongrupo) {
+        this.id = id;
+        this.descripciongrupo = descripciongrupo;
     }
-    public Grupopreguntas(int idGrupoPreguntas, String descripcionGrupo, Set preguntas) {
-       this.idGrupoPreguntas = idGrupoPreguntas;
-       this.descripcionGrupo = descripcionGrupo;
+    public Grupopreguntas(Integer id, String descripciongrupo, Set preguntas) {
+       this.id = id;
+       this.descripciongrupo = descripciongrupo;
        this.preguntas = preguntas;
     }
    
-    public int getIdGrupoPreguntas() {
-        return this.idGrupoPreguntas;
+    public Integer getId() {
+        return this.id;
     }
     
-    public void setIdGrupoPreguntas(int idGrupoPreguntas) {
-        this.idGrupoPreguntas = idGrupoPreguntas;
+    public void setId(Integer id) {
+        this.id = id;
     }
-    public String getDescripcionGrupo() {
-        return this.descripcionGrupo;
+    public String getDescripciongrupo() {
+        return this.descripciongrupo;
     }
     
-    public void setDescripcionGrupo(String descripcionGrupo) {
-        this.descripcionGrupo = descripcionGrupo;
+    public void setDescripciongrupo(String descripciongrupo) {
+        this.descripciongrupo = descripciongrupo;
     }
     public Set getPreguntas() {
         return this.preguntas;

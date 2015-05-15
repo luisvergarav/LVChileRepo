@@ -1,7 +1,8 @@
 package model.entities;
-// Generated 23-11-2014 11:31:32 PM by Hibernate Tools 3.2.1.GA
+// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
 
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 public class Plantilla  implements java.io.Serializable {
 
 
-     private int idPlantilla;
+     private Integer idplantilla;
      private Encuestador encuestador;
      private String tipo;
      private String descripcion;
@@ -21,25 +22,25 @@ public class Plantilla  implements java.io.Serializable {
     }
 
 	
-    public Plantilla(int idPlantilla, String tipo, String descripcion) {
-        this.idPlantilla = idPlantilla;
+    public Plantilla(Integer idplantilla, String tipo, String descripcion) {
+        this.idplantilla = idplantilla;
         this.tipo = tipo;
         this.descripcion = descripcion;
     }
-    public Plantilla(int idPlantilla, Encuestador encuestador, String tipo, String descripcion, Set evaluacions) {
-       this.idPlantilla = idPlantilla;
+    public Plantilla(Integer idplantilla, Encuestador encuestador, String tipo, String descripcion, Set evaluacions) {
+       this.idplantilla = idplantilla;
        this.encuestador = encuestador;
        this.tipo = tipo;
        this.descripcion = descripcion;
        this.evaluacions = evaluacions;
     }
    
-    public int getIdPlantilla() {
-        return this.idPlantilla;
+    public Integer getIdplantilla() {
+        return this.idplantilla;
     }
     
-    public void setIdPlantilla(int idPlantilla) {
-        this.idPlantilla = idPlantilla;
+    public void setIdplantilla(Integer idplantilla) {
+        this.idplantilla = idplantilla;
     }
     public Encuestador getEncuestador() {
         return this.encuestador;

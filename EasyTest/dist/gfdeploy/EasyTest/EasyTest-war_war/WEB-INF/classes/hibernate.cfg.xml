@@ -8,16 +8,16 @@
     <property name="hibernate.connection.username">easytest</property>
     <property name="hibernate.connection.password">welcome1</property>
     <property name="hibernate.show_sql">true</property>
-    <mapping resource="model/Entities/Pregunta.hbm.xml"/>
-    <mapping resource="model/Entities/Encuestado.hbm.xml"/>
-    <mapping resource="model/Entities/Roles.hbm.xml"/>
-    <mapping resource="model/Entities/Evapreguntas.hbm.xml"/>
-    <mapping resource="model/Entities/Alternativas.hbm.xml"/>
-    <mapping resource="model/Entities/Test.hbm.xml"/>
-    <mapping resource="model/Entities/Plantilla.hbm.xml"/>
-    <mapping resource="model/Entities/Encuestador.hbm.xml"/>
-    <mapping resource="model/Entities/Evaluacion.hbm.xml"/>
-    <mapping resource="model/Entities/Grupopreguntas.hbm.xml"/>
-        <mapping resource="model/Entities/Respuesta.hbm.xml"/>
+    <mapping resource="model/entities/Plantilla.hbm.xml"/>
+    <mapping resource="model/entities/Test.hbm.xml"/>
+    <mapping resource="model/entities/Encuestado.hbm.xml"/>
+    <mapping resource="model/entities/Roles.hbm.xml"/>
+    <mapping resource="model/entities/Alternativas.hbm.xml"/>
+    <mapping resource="model/entities/Pregunta.hbm.xml"/>
+    <mapping resource="model/entities/Encuestador.hbm.xml"/>
+    <mapping resource="model/entities/Evapreguntas.hbm.xml"/>
+    <mapping resource="model/entities/Grupopreguntas.hbm.xml"/>
+    <mapping resource="model/entities/Evaluacion.hbm.xml"/>
+    <mapping resource="model/entities/Respuesta.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

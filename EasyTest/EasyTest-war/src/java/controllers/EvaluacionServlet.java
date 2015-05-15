@@ -147,7 +147,7 @@ public class EvaluacionServlet extends HttpServlet {
     private void listarEvaluacion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           HttpSession session = request.getSession();
          Encuestador encuestador =  (Encuestador)  session.getAttribute("encuestador");
-        int idEncuestadorBuscado = encuestador.getIdEncuestador();
+        int idEncuestadorBuscado = encuestador.getIdencuestador();
                         
         
         Set<Evaluacion> listaEvaluaciones = encuestador.getEvaluacions();
@@ -180,11 +180,11 @@ public class EvaluacionServlet extends HttpServlet {
     Evaluacion evaluacion = new Evaluacion();
     
     evaluacion.setCabecera(cabecera);
-    evaluacion.setPiePagina(piePagina);
+    evaluacion.setPiepagina(piePagina);
     evaluacion.setPlantilla(plantillaDaoImpl.getbyId(idPlantilla));
     evaluacion.setEncuestador(encuestador);
     evaluacion.setItem(item);
-    evaluacion.setMensajeConfirmacion(mensajeconfirmacion);
+    evaluacion.setMensajeconfirmacion(mensajeconfirmacion);
     
     evaluacionDao.guardar(evaluacion);
     request.setAttribute("encuestador", encuestador);
@@ -231,13 +231,13 @@ public class EvaluacionServlet extends HttpServlet {
         
         Pregunta pregunta = new Pregunta();
         
-        pregunta.setTextoPregunta(textoPregunta);
-        pregunta.setTipoPregunta(tipoPregunta);
+        pregunta.setTextopregunta(textoPregunta);
+        pregunta.setTipopregunta(tipoPregunta);
         
         
         Grupopreguntas grupoPreguntas = new Grupopreguntas();
         
-        grupoPreguntas.setDescripcionGrupo("Grupo 1");
+        grupoPreguntas.setDescripciongrupo("Grupo 1");
         
         grupoPreguntasDaoServiceImpl.guardar(grupoPreguntas);
         
@@ -311,7 +311,7 @@ public class EvaluacionServlet extends HttpServlet {
         alternativas.setCorrecta('T');        
         alternativas.setPuntaje(puntaje);
         alternativas.setPregunta(pregunta);
-        alternativas.setTextoAlternativa(texto);
+        alternativas.setTextoalternativa(texto);
         
         Set<Alternativas> alternativasPreguntas = pregunta.getAlternativases();
         

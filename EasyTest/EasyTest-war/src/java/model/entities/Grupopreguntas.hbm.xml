@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 23-11-2014 11:31:42 PM by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="easytest" name="model.entities.Grupopreguntas" table="grupopreguntas">
-    <id name="idGrupoPreguntas" type="java.lang.Integer">
-      <column name="idGrupoPreguntas"/>
-      <generator class="sequence">
-          <param name="sequence">IDGRUPOPREGUNTAS_SEC</param>
-          </generator>
-    </id>
-    <property name="descripcionGrupo" type="string">
-      <column length="50" name="descripcionGrupo" not-null="true"/>
-    </property>
-    <set inverse="true" name="preguntas">
-      <key>
-        <column name="idGrupoPreguntas" not-null="true"/>
-      </key>
-      <one-to-many class="model.entities.Pregunta"/>
-    </set>
-  </class>
+    <class name="model.entities.Grupopreguntas" table="GRUPOPREGUNTAS" schema="EASYTEST" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">IDGRUPOPREGUNTAS_SEC</param>
+            </generator>
+        </id>
+        <property name="descripciongrupo" type="string">
+            <column name="DESCRIPCIONGRUPO" length="50" not-null="true" />
+        </property>
+        <set name="preguntas" table="PREGUNTA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GRUPOPREGUNTAS_ID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.entities.Pregunta" />
+        </set>
+    </class>
 </hibernate-mapping>

@@ -1,40 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 01-12-2014 01:13:16 AM by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="easytest" name="model.entities.Evaluacion" table="evaluacion">
-    <id name="idEvaluacion" type="java.lang.Integer">
-      <column name="idEvaluacion"/>
-      <generator class="sequence">
-          <param name="sequence">IDEVALUACION_SEC</param>
-      </generator>
-    </id>
-    <many-to-one class="model.entities.Encuestador" fetch="select" name="encuestador">
-      <column name="idEncuestador" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="model.entities.Plantilla" fetch="select" name="plantilla">
-      <column name="idPlantilla" not-null="true"/>
-    </many-to-one>
-    <property name="item" type="string">
-      <column length="100" name="Item"/>
-    </property>
-    <property name="cabecera" type="string">
-      <column length="100" name="Cabecera" not-null="true"/>
-    </property>
-    <property name="mensajeConfirmacion" type="string">
-      <column length="100" name="MensajeConfirmacion"/>
-    </property>
-    <property name="piePagina" type="string">
-      <column length="100" name="PiePagina" not-null="true"/>
-    </property>
-    <set inverse="false" name="evaluacionpreguntases" table="evaluacionpreguntas" lazy="false" fetch="select" cascade="all">
-      <key>
-        <column name="idEvaluacion" not-null="true"/>
-      </key>           
-      <many-to-many entity-name="model.entities.Pregunta">
-                <column name="idPregunta" not-null="true" />
-            </many-to-many>
-      
-    </set>
-  </class>
+    <class name="model.entities.Evaluacion" table="EVALUACION" schema="EASYTEST" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">IDEVALUACION_SEC</param>
+            </generator>
+        </id>
+        <many-to-one name="plantilla" class="model.entities.Plantilla" fetch="select">
+            <column name="PLANTILLA_IDPLANTILLA" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="encuestador" class="model.entities.Encuestador" fetch="select">
+            <column name="ENCUESTADOR_IDENCUESTADOR" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="item" type="string">
+            <column name="ITEM" length="100" not-null="true" />
+        </property>
+        <property name="cabecera" type="string">
+            <column name="CABECERA" length="100" not-null="true" />
+        </property>
+        <property name="mensajeconfirmacion" type="string">
+            <column name="MENSAJECONFIRMACION" length="100" not-null="true" />
+        </property>
+        <property name="piepagina" type="string">
+            <column name="PIEPAGINA" length="100" not-null="true" />
+        </property>
+        <set name="evapreguntases" table="EVAPREGUNTAS" inverse="false" lazy="false" fetch="select" cascade="all">
+            <key>
+                <column name="EVALUACION_ID" precision="22" scale="0" not-null="true" />
+            </key>
+ 
+            
+             <many-to-many entity-name="model.entities.Pregunta">
+        <column name="PREGUNTA_ID" not-null="true"/>
+      </many-to-many>
+        </set>
+        <set name="tests" table="TEST" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="EVALUACION_IDEVALUACION" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.entities.Test" />
+        </set>
+    </class>
 </hibernate-mapping>

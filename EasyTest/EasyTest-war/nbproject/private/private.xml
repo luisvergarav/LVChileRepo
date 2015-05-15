@@ -19,10 +19,23 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarPregunta.jsp</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/tags/template.tag</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Alternativas.hbm.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Test.java</file>
             <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/index.jsp</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/controllers/EncuestadorServlet.java</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarEvaluador.jsp</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Encuestado.hbm.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Evaluacion.java</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/TopTemplate.jsp</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Grupopreguntas.hbm.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/hibernate.cfg.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Pregunta.hbm.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Test.hbm.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Evaluacion.hbm.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/tags/template.tag</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarEvaluacion.jsp</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Encuestador.hbm.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/controllers/TestServlet.java</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/hibernate.reveng.xml</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/controllers/EvaluacionServlet.java</file>
         </group>
     </open-files>
 </project-private>

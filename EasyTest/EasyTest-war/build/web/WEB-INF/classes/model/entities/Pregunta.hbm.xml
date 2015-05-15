@@ -1,41 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 01-12-2014 01:13:16 AM by Hibernate Tools 3.2.1.GA -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="easytest" name="model.entities.Pregunta" table="pregunta">
-    <id name="idPregunta" type="java.lang.Integer">
-      <column name="idPregunta"/>     
-          <generator class="sequence">
-          <param name="sequence">IDPREGUNTA_SEC</param>
-      </generator>
-    </id>
-    <many-to-one class="model.entities.Grupopreguntas" fetch="select" name="grupopreguntas">
-      <column name="idGrupoPreguntas"/>
-    </many-to-one>
-    <property name="textoPregunta" type="string">
-      <column length="100" name="textoPregunta" not-null="true"/>
-    </property>
-    <property name="tipoPregunta" type="string">
-      <column length="30" name="tipoPregunta" not-null="true"/>
-    </property>
-    <property name="obligatorio" type="java.lang.Boolean">
-      <column name="obligatorio"/>
-    </property>
-    <set inverse="true" name="evaluacionpreguntases" fetch="select" table="evaluacionpreguntas">
-      <key>
-        <column name="idPregunta" not-null="true"/>
-      </key>
-
-      <many-to-many entity-name="model.entities.Evaluacion">
-                <column name="idEvaluacion" not-null="true" />
-            </many-to-many>
-
-    </set>
-    <set inverse="true" name="alternativases" cascade="all" lazy="false">
-      <key>
-        <column name="idPregunta" not-null="true"/>
-      </key>
-      <one-to-many class="model.entities.Alternativas"/>
-    </set>
-  </class>
+    <class name="model.entities.Pregunta" table="PREGUNTA" schema="EASYTEST" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" precision="22" scale="0" />
+            <generator class="sequence" >
+                <param name="sequence">IDPREGUNTA_SEC</param>
+            </generator>
+        </id>
+        <many-to-one name="grupopreguntas" class="model.entities.Grupopreguntas" fetch="select">
+            <column name="GRUPOPREGUNTAS_ID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="textopregunta" type="string">
+            <column name="TEXTOPREGUNTA" length="100" not-null="true" />
+        </property>
+        <property name="tipopregunta" type="string">
+            <column name="TIPOPREGUNTA" length="30" not-null="true" />
+        </property>
+        <property name="obligatorio" type="char">
+            <column name="OBLIGATORIO" length="1" not-null="true" />
+        </property>
+        <set name="evapreguntases" table="EVAPREGUNTAS" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="PREGUNTA_ID" precision="22" scale="0" not-null="true" />
+            </key>
+          
+            
+            <many-to-many entity-name="model.entities.Evaluacion">
+        <column name="EVALUACION_ID" not-null="true"/>
+      </many-to-many>
+        </set>
+        <set name="alternativases" table="ALTERNATIVAS" inverse="false" lazy="false" fetch="select" cascade="all">
+            <key>
+                <column name="PREGUNTA_IDPREGUNTA" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.entities.Alternativas" />
+        </set>
+    </class>
 </hibernate-mapping>

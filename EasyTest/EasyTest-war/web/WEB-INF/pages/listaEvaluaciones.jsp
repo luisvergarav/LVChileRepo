@@ -1,7 +1,7 @@
 
 <%@page import="java.util.Set"%>
-<%@page import="model.Entities.Encuestador"%>
-<%@page import="model.Entities.Evaluacion"%>
+<%@page import="model.entities.Encuestador"%>
+<%@page import="model.entities.Evaluacion"%>
 <%@page import="java.util.List"%>
 <%
 

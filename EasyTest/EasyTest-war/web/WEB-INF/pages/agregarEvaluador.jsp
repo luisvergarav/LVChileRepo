@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="model.Entities.Encuestador"%>
-<%@page import="model.Entities.Evaluacion"%>
+<%@page import="model.entities.Encuestador"%>
+<%@page import="model.entities.Evaluacion"%>
 <%@page import="java.util.List"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
