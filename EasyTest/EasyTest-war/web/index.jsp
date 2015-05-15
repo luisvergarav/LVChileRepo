@@ -4,7 +4,7 @@
 <t:template>
     <jsp:attribute name="header">
         
-      <h1>Welcome</h1>
+   
 
     </jsp:attribute>
     <jsp:attribute name="footer">

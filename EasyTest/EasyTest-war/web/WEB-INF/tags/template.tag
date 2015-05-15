@@ -25,12 +25,12 @@
 	</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse navbar-ex1-collapse">
+	<div class="collapse navbar-collapse navbar-ex1-collapse navbar-inverse " >
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Link</a></li>
 			<li><a href="#">Link</a></li>
 		</ul>
-		<form class="navbar-form navbar-left" role="search">
+		<form class="navbar-form navbar-inverse navbar-left" role="search">
 			<div class="form-group">
 				<input type="text" class="form-control" placeholder="Search">
 			</div>

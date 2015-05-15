@@ -15,7 +15,7 @@ Encuestador encuestador = (Encuestador )request.getAttribute("encuestador");
  <t:template>
     <jsp:attribute name="header">
         
-      <h1>Easy Test</h1>
+
 
     </jsp:attribute>
     <jsp:attribute name="footer">

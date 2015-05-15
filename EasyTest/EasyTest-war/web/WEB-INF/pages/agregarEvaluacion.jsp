@@ -8,104 +8,98 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-Evaluacion evaluacion = (Evaluacion )request.getAttribute("evaluacion");
+    Evaluacion evaluacion = (Evaluacion) request.getAttribute("evaluacion");
 
-List<Plantilla> plantillas = (List<Plantilla>) request.getAttribute("listaPlantillas");
+    List<Plantilla> plantillas = (List<Plantilla>) request.getAttribute("listaPlantillas");
 
 %>
 
 <t:template>
     <jsp:attribute name="header">
-       <style>
-           #body{
-               background: #999999;
-           }
-       </style>
+        <style>
+            #body{
+                background: #999999;
+            }
+        </style>
 
- <h1>Easy Test</h1>
+
     </jsp:attribute>
     <jsp:attribute name="footer">
 
     </jsp:attribute>
     <jsp:body>
-        
-        <div class="panel panel-default" style="width:70%;left:15%;right:15%;padding-bottom: 15%;position: relative">
-            <div class="panel-heading">Crear Evaluacion</div>
-        
-            <div class="panel-body">
-        <form action="EvaluacionServlet?action=guardar" method="POST">
-            <table>
-            <tr>
-                <td>
-                    IdEncuestador
-                </td>
-                <td>
-                    <input type="text" name="idEncuestador" value="${evaluacion.getEncuestador().getIdencuestador()}" />
-                </td>
-            </tr>    
-            <tr>
-                <td>
-                    Cabecera
-                </td>
-                <td>
-                        <input type="text" name="cabecera" value="${evaluacion.getCabecera()}" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Pie de Pagina
-                </td>
-                <td>
-                    <input type="text" name="piePagina" value="${evaluacion.getPiepagina()}" />
-                </td>
-              
-            </tr>
-                
-                 <tr>
-                <td>
-                    Item
-                </td>
-                <td>
-                    <input type="text" name="item" value="${evaluacion.getItem()}" />
-                </td>
-              
-            </tr>
-                     <tr>
-                <td>
-                    Mensaje Confirmacion
-                </td>
-                <td>
-                    <input type="text" name="mensajeconfirmacion" value="${evaluacion.getMensajeconfirmacion()}" />
-                </td>
-              
-            </tr>
-            <tr>
-                <td>
-                    
-                </td>
-                <td>
-                    <input type="submit" value="Guardar" name="guardar" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Seleccione Plantilla
-                </td>
-                <td>
-            <select      name="idPlantilla">
-                <c:forEach var="plantilla" items="${listaPlantillas}" varStatus="counter">
-                <option value="${plantilla.getIdplantilla()}">
-                        ${plantilla.getDescripcion()}
-                    </option>
-                </c:forEach>   
-              
-            </select>
-              </td>
-            </tr>
-         </table>
-        </form>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default" >
+                <div class="panel-heading">Crear Evaluacion</div>
+
+                <div class="panel-body">
+                    <form action="EvaluacionServlet?action=guardar" method="POST">
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="idEncuestador">IdEncuestador</label>
+                            <div class="col-md-6">
+                                <input type="text" name="idEncuestador"  class="form-control" value="${evaluacion.getEncuestador().getIdencuestador()}" required="required" title=""/>
+                            </div>
+                        </div>	
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="cabecera">Cabecera</label>
+                            <div class="col-md-6">
+                                <input type="text" name="cabecera"  class="form-control" value="${evaluacion.getCabecera()}" required="required" title=""/>
+                            </div>
+                        </div>	
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="cabecera">Pie de Pagina</label>
+                            <div class="col-md-6">
+                                <input type="text" name="piePagina"  class="form-control" value="${evaluacion.getPiepagina()}" required="required" title=""/>
+                            </div>
+                        </div>	
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="item">Item</label>
+                            <div class="col-md-6">
+                                <input type="text" name="item"  class="form-control" value="${evaluacion.getItem()}" required="required" title=""/>
+                            </div>
+                        </div>	
+
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="mensajeconfirmacion">Mensaje Confirmacion</label>
+                            <div class="col-md-6">
+                                <input type="text" name="mensajeconfirmacion"  class="form-control" value="${evaluacion.getMensajeconfirmacion()}" required="required" title=""/>
+                            </div>
+                        </div>	
+
+
+
+
+                       
+                        <div class="form-group">
+                          
+                                <label class="col-md-4 control-label" for="mensajeconfirmacion">Seleccione Plantilla</label>                                                    
+
+                                <div class="col-md-6">
+                                    <select      name="idPlantilla">
+                                        <c:forEach var="plantilla" items="${listaPlantillas}" varStatus="counter">
+                                            <option value="${plantilla.getIdplantilla()}">
+                                                ${plantilla.getDescripcion()}
+                                            </option>
+                                        </c:forEach>   
+
+                                    </select>
+                                </div>    
+                            </div>
+                             <div class="form-group">
+                            <div class="col-md-4 col-md-offset-5">
+                                <button type="submit" name="guardar" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>         
         </div>
-     </div>
     </jsp:body>
 </t:template>
 

@@ -22,7 +22,7 @@
                 background: #999999;
             }
         </style>
-        <h1>Easy Test</h1>
+   
 
     </jsp:attribute>
     <jsp:attribute name="footer">

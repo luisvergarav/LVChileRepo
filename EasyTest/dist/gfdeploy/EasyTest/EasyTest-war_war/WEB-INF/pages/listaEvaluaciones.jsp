@@ -15,7 +15,7 @@ List<Evaluacion> listaEvaluaciones = (List<Evaluacion>) request.getAttribute("li
 <t:template>
     <jsp:attribute name="header">
         
-      <h1>Easy Test</h1>
+  
 
     </jsp:attribute>
     <jsp:attribute name="footer">
