@@ -1,10 +1,11 @@
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
     <head>
-         <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-             <link href="resources/css/bootstrapValidator.min.css" rel="stylesheet"/>
+         <link href="/EasyTestWeb/resources/css/bootstrap.min.css" rel="stylesheet">
+             <link href="/EasyTestWeb/resources/css/bootstrapValidator.min.css" rel="stylesheet"/>
     
         
 
@@ -21,14 +22,15 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href="#">Title</a>
+		<a class="navbar-brand" href="#">Login</a>
 	</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse navbar-inverse " >
 		<ul class="nav navbar-nav">
-			<li class="active"><a href="#">Link</a></li>
-			<li><a href="#">Link</a></li>
+			<li class="active"><a href="<%=request.getContextPath()%>/restricted/mantenedorServlet?action=agregarUsuario">Admin Zone</a></li>
+			<li><a href="<%=request.getContextPath()%>/logout.jsp?logoff=true">LogOut</a></li>
+                        
 		</ul>
 		<form class="navbar-form navbar-inverse navbar-left" role="search">
 			<div class="form-group">
@@ -38,26 +40,28 @@
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="#">Link</a></li>
+                        <c:if test='<%=request.isUserInRole("encuestador")%>' >
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tareas<b class="caret"></b></a>
 				<ul class="dropdown-menu">
 					<li><a href="<%=request.getContextPath()%>/EncuestadorServlet?action=agregar">Crear Encuestador</a></li>
 					<li><a href="<%=request.getContextPath()%>/EvaluacionServlet?action=agregar">Crear Test</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li><a href="#">Separated link</a></li>
+				
 				</ul>
 			</li>
+                        </c:if>
+                        <c:if test='<%=request.isUserInRole("manager-gui")%>' >
                         <li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mantenedor<b class="caret"></b></a>
 				<ul class="dropdown-menu">
-                                        <li><a href="<%=request.getContextPath()%>/mantenedorServlet?action=agregarUsuario">Registrar Usuarios</a></li>
+                                        <li><a href="<%=request.getContextPath()%>/restricted/mantenedorServlet?action=agregarUsuario">Registrar Usuarios</a></li>
 					<li><a href="<%=request.getContextPath()%>/EncuestadorServlet?action=agregar">Crear Encuestador</a></li>
 					<li><a href="<%=request.getContextPath()%>/EvaluacionServlet?action=agregar">Crear Test</a></li>
 					<li><a href="#">Something else here</a></li>
 					<li><a href="#">Separated link</a></li>
 				</ul>
 			</li>
-                        
+                        </c:if>
 		</ul>
 	</div><!-- /.navbar-collapse -->
 </nav>	
@@ -80,10 +84,10 @@
       <script src="https://code.jquery.com/jquery.js"></script>
     
        
-	<script src="resources/js/jquery.min.js"></script>
-         <script src="resources/js/bootstrapValidator.js" type="text/javascript"></script>
-         <script src="resources/js/bootstrap.min.js"></script>
-      <script src="resources/js/bootstrapValidator.min.js" type="text/javascript"></script>
+	<script src="/EasyTestWeb/resources/js/jquery.min.js"></script>
+         <script src="/EasyTestWeb/resources/js/bootstrapValidator.js" type="text/javascript"></script>
+         <script src="/EasyTestWeb/resources/js/bootstrap.min.js"></script>
+      <script src="/EasyTestWeb/resources/js/bootstrapValidator.min.js" type="text/javascript"></script>
   </body>
   <script type="text/javascript">
 	$(document).ready(function () {

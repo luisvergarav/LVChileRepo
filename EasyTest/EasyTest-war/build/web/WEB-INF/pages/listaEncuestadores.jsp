@@ -1,27 +1,22 @@
-<%-- 
-    Document   : listaEvaluaciones
-    Created on : 27-11-2014, 09:18:46 PM
-    Author     : Luis
---%>
-<%@page import="model.entities.Encuestador"%>
-<%@page import="model.entities.Evaluacion"%>
-<%@page import="java.util.List"%>
-<%
-
-List<Encuestador> listaEncuestadores = (List<Encuestador>) request.getAttribute("listaEncuestadores");
-
-%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-       	</form>
+<%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<t:template>
+    <jsp:attribute name="header">
+        
+
+
+    </jsp:attribute>
+    <jsp:attribute name="footer">
+
+    </jsp:attribute>
+    <jsp:body>
+       </form>
 	</div>
-	<a href="<%=request.getContextPath()%>/EncuestadorServlet?action=agregar">Crear Encuestador (+)</a>
+	<a href="<c:out value="${request.getContextPath()}"/>mantenedorServlet?action=agregarUsuario">Crear Encuestador (+)</a>
+        
+       <h3>${listaEncuestadores.size()} Usuarios Encontrados</h3>
 	<table id="tabla1" cellpadding='3' cellspacing='2' class="table table-filter">
 	
 		<tr>
@@ -31,32 +26,33 @@ List<Encuestador> listaEncuestadores = (List<Encuestador>) request.getAttribute(
 		<th>Eliminar</th>
 		</tr>
 		
-		<% for (Encuestador encuestador:listaEncuestadores){%>
+                <c:forEach var="encuestador" items="${listaEncuestadores}">
 			<tr>
 			
 			<td>
-			<%=encuestador.getNombre()%>
+			${encuestador.getNombre()}
 			</td>
 			
 			<td>
-			<%=encuestador.getApellido()%>
+			${encuestador.getApellido()}
 			</td>
                         <td>
-			<%=encuestador.getRut()%>
+			${encuestador.getRut()}
 			</td>
 			
 			
 			<td>
 			
-			 <a href="<%=request.getContextPath()%>/EncuestadorServlet?action=editar&idEncuestador=<%=encuestador.getIdEncuestador()%>">Editar</a>
+			 <a href="<c:out value="${request.getContextPath()}"/>mantenedorServlet?action=editarUsuario&idEncuestador=${encuestador.getIdencuestador()}">Editar</a>
 			</td>
 				<td>
 			
-			 <a onclick="return confirm('¿Seguro que desea eliminar?')" href="<%=request.getContextPath()%>/EncuestadorServlet?action=eliminar&idEncuestador=<%=encuestador.getIdEncuestador()%>">Eliminar</a>
+			 <a onclick="return confirm('¿Seguro que desea eliminar?')" href="<c:out value="${request.getContextPath()}"/>mantenedorServlet?action=eliminarUsuario&idEncuestador=${encuestador.getIdencuestador()}">Eliminar</a>
 			</td>
 			</tr>
-		<%}%>
+                </c:forEach>
 		
 		</table>
-    </body>
-</html>
+
+    </jsp:body>
+</t:template>

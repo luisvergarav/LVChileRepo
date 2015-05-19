@@ -142,9 +142,7 @@
                                 </c:if>
                             </td>
                             <td>${alternativa.getTextoalternativa()}</td>
-                            <c:if test="${alternativa.getCorrecta() == 'T'}" >
-                            <td>*</td>
-                            </c:if>
+                            
                         </tr>
                             </table>
                         </c:forEach>    

@@ -38,6 +38,8 @@ List<Evaluacion> listaEvaluaciones = (List<Evaluacion>) request.getAttribute("li
 		<th>Id</th>
 		<th>Encabezado</th>
 		<th>Pie de Pagina</th>		
+                <th>Preguntas</th>
+                <th>Tests</th>
                 <th>Editar</th>
 		<th>Eliminar</th>
 		</tr>
@@ -55,7 +57,12 @@ List<Evaluacion> listaEvaluaciones = (List<Evaluacion>) request.getAttribute("li
 			<c:out value="${evaluacion.getPiepagina()}"/>
 			</td>
 			
-			
+			<td>
+                              <span class="badge">${evaluacion.getEvapreguntases().size()}</span>
+                        </td>
+                        <td>
+                              <span class="badge">${evaluacion.getTests().size()}</span>
+                        </td>
 			<td>
 			
 			 <a href="<c:out value="${request.getContextPath()}"/>EvaluacionServlet?action=editar&idEvaluacion=${evaluacion.getId()}">Editar</a>

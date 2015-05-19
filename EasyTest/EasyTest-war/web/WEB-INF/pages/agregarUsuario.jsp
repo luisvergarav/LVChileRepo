@@ -1,63 +1,117 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@page import="model.entities.Encuestador"%>
+<%@page import="model.entities.Evaluacion"%>
+<%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%
+Encuestador encuestador = (Encuestador )request.getAttribute("encuestador");
 
-<t:template>
+
+//List<String> errores = (List<String>) request.getAttribute("errores");
+
+%>
+ <t:template>
     <jsp:attribute name="header">
         
 
 
     </jsp:attribute>
     <jsp:attribute name="footer">
-
+     
     </jsp:attribute>
     <jsp:body>
-        <div class="container">
+  
+        <form action="mantenedorServlet?action=guardarUsuario" method="POST" id="registroForm">
+            <div class="col-md-6 col-md-offset-3">
 		<div class="panel panel-default">
-			<div class="panel-heading">Registration</div>
-			<div class="panel-body">
-				<form id="registration-form" method="POST" class="form-horizontal" action="#">
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="email">Email</label>
-						<div class="col-md-4">
-							<input type="text" class="form-control" id="email" name="email" placeholder="Your email address" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="password">Password</label>
-						<div class="col-md-4">
-							<input type="password" class="form-control" id="password" name="password" placeholder="Password" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="confirmpassword">Confirmar Password</label>
-						<div class="col-md-4">
-							<input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" />	
-						</div>
-					</div>					
-					<div class="form-group">
-						<label class="col-md-2 control-label" for="membership"></label>
-						<div class="col-md-4">
-							<select class="form-control" id="membership" name="membership">
-								<option value="0">-Selecciona un perfil a asignar-</option>
-								<option value="1">Encuestador</option>
-								<option value="2">Jefe de Personal</option>
-                                                                <option value="2">Jefe de Estudio</option>
-                                                                <option value="2">Timer</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-md-6 col-md-offset-2">
-							<button type="submit" class="btn btn-success">Submit</button>
-						</div>
-					</div>
-				</form>
-				<div id="confirmation" class="alert alert-success hidden">
-					<span class="glyphicon glyphicon-star"></span> Thank you for registering
-				</div>
+			
+			<div class="panel-heading">
+				<b>Datos del Usuario</b>
 			</div>
+
+			<div class="panel-body">	
+                            <input type="hidden"                               
+                                   value="${encuestador.getIdencuestador()}"                                    
+                                   id="idEncuestador" name="idEncuestador"/>
+					<div class="form-group">
+						<label class="col-md-4 control-label" >Nombre</label>
+						<div class="col-md-8">
+							<input type="text" value="${encuestador.getNombre()}" class="form-control" id="nombre" name="nombre" placeholder="Nombre de Encuestado" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" >Apellido</label>
+						<div class="col-md-8">
+							<input type="text" value="${encuestador.getApellido()}" class="form-control" id="apellido" name="apellido" placeholder="Apellido de Encuestado" />
+						</div>
+					</div>
+                                                
+                                         <div class="form-group">
+						<label class="col-md-4 control-label" >Nick</label>
+						<div class="col-md-8">
+							<input type="text" value="${encuestador.getNick()}" class="form-control" id="nick" name="nick" placeholder="Nick Encuestado" />
+						</div>
+					</div>       
+                                                
+                                        <div class="form-group">
+						<label class="col-md-4 control-label" >Rut</label>
+						<div class="col-md-8">
+							<input type="text" value="${encuestador.getRut()}" class="form-control" id="rut" name="rut" placeholder="Rut Encuestado" />
+						</div>
+					</div> 
+                                                
+                                         
+                                                
+                                        <div class="form-group">
+						<label class="col-md-4 control-label" >Contraseña</label>
+						<div class="col-md-8">
+                                                    <input type="password" value="${encuestador.getContrasena()}" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña Encuestado" />
+						</div>
+					</div> 
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="email">Email</label>
+						<div class="col-md-8">
+							<input type="text" value="${encuestador.getEmail()}" class="form-control" id="email" name="email" placeholder="Email de encuestado" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="fnacimiento">Fecha de Nacimiento</label>
+						<div class="col-md-6">
+			   				<input type="date" name="" id="input" class="form-control" value="" required="required" title="">
+						</div>
+					</div>	
+
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="sexo">Sexo</label>
+						<div class="col-md-8">
+						<select id="dpbox_sexo" class="form-control" required="required">
+								<option>Masculino</option>
+								<option>Femenino</option>
+								<option>Otro</option>
+						</select>
+						</div>
+					</div>
+			
+					<br>
+		
+					<div class="form-group">
+						<div class="col-md-4 col-md-offset-5">
+							<button type="submit" class="btn btn-primary">ENVIAR</button>
+						</div>
+					</div>
+			</div>
+			<!-- Fin del panel principal -->			
 		</div>
-	</div>
+	</div>				
+	
+            
+        </form>
 
     </jsp:body>
+      
+
 </t:template>
+

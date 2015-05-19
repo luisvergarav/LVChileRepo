@@ -18,16 +18,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/testUsuario.jsp</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Evaluacion.hbm.xml</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarEvaluacion.jsp</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/resources/css/bootstrap.min.css</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarPreguntaOld.jsp</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarAlternativa_old.jsp</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarAlternativa.jsp</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/controllers/EvaluacionServlet.java</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/java/model/entities/Pregunta.hbm.xml</file>
-            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/web/WEB-INF/pages/agregarEvaluador.jsp</file>
+            <file>file:/D:/duoc/proyectos/Git/Duoc/Portafolio/LVChileRepo/EasyTest/EasyTest-war/src/conf/MANIFEST.MF</file>
         </group>
     </open-files>
 </project-private>

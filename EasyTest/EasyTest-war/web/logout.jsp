@@ -9,6 +9,7 @@
 <%
 if (request.getParameter("logoff") != null) {
 session.invalidate();
+
 response.sendRedirect("index.jsp");
 return;
 }
@@ -26,7 +27,7 @@ con ID de sesión <b><%= session.getId() %></b><br><br>
 
 Pulse para cerrar la sesión 
 
-<a href='<%= response.encodeURL("index.jsp?logoff=true") %>'>aquí</a>.
+<a href='<%= response.encodeURL("logout.jsp?logoff=true") %>'>aquí</a>.
 Esto debe forzar la carga de la página de log
 </body>
 </html>

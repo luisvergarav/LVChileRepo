@@ -13,12 +13,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Dao.EncuestadorDaoServiceImpl;
+import model.entities.Encuestador;
 
 /**
  *
  * @author VASS13
  */
-@WebServlet(name = "mantenedorServlet", urlPatterns = {"/mantenedorServlet"})
+@WebServlet(name = "mantenedorServlet", urlPatterns = {"/restricted/mantenedorServlet"})
 public class mantenedorServlet extends HttpServlet {
 
     /**
@@ -35,11 +38,12 @@ public class mantenedorServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
   
-        if (request.getParameter("action").equals("registrarUsuario")) guardarUsuario(request,response);
+        if (request.getParameter("action").equals("guardarUsuario")) guardarUsuario(request,response);
         if (request.getParameter("action").equals("agregarUsuario")) agregarUsuario(request,response);
         if (request.getParameter("action").equals("eliminarUsuario")) eliminarUsuario(request,response);
-        if (request.getParameter("action").equals("listarUsuario")) listarUsuario(request,response);
-       
+        if (request.getParameter("action").equals("listarUsuarios")) listarUsuario(request,response);
+        if (request.getParameter("action").equals("editarUsuario")) editarUsuario(request,response);
+       if (request.getParameter("action").equals("eliminarUsuario")) eliminarUsuario(request,response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -81,11 +85,49 @@ public class mantenedorServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void guardarUsuario(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void guardarUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException {
+         String id = request.getParameter("idEncuestador");
+         String nombre = request.getParameter("nombre");
+        String rut = request.getParameter("rut");
+        String apellido = request.getParameter("apellido");
+        String nick = request.getParameter("nick");
+        String contrasena = request.getParameter("contrasena");
+        String email = request.getParameter("email");
+        int idParseado;
+        
+        EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
+        
+        Encuestador encuestador = new Encuestador();
+        
+        if (!id.isEmpty()) {
+            idParseado = Integer.parseInt(id);
+            encuestador.setIdencuestador(idParseado);
+        }
+        
+        
+        encuestador.setRut(rut);
+        encuestador.setContrasena(contrasena);
+        encuestador.setEmail(email);
+        encuestador.setNick(nick);
+        encuestador.setNombre(nombre);
+        encuestador.setApellido(apellido);
+                
+        
+        encuestadorDao.guardar(encuestador);
+        HttpSession session = request.getSession();
+        
+        session.setAttribute("encuestador", encuestadorDao.getbyRut(rut));
+        request.setAttribute("listaEncuestadores", encuestadorDao.getAll());
+        
+        response.sendRedirect("mantenedorServlet?action=listarUsuarios");
     }
 
     private void agregarUsuario(HttpServletRequest request, HttpServletResponse response) {
+          Encuestador encuestador = new Encuestador();
+        
+        
+                
+        request.setAttribute("encuestador", encuestador);
          RequestDispatcher rd =   request.getRequestDispatcher("/WEB-INF/pages/agregarUsuario.jsp");
         try {
             rd.forward(request, response);
@@ -96,12 +138,43 @@ public class mantenedorServlet extends HttpServlet {
         }
     }
 
-    private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    private void listarUsuario(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
+    private void listarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
+        
+        
+                
+        request.setAttribute("listaEncuestadores", encuestadorDao.getAll());
+        
+        request.getRequestDispatcher("/WEB-INF/pages/listaEncuestadores.jsp").forward(request, response);
+    }
+ private void editarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idEncuestador = request.getParameter("idEncuestador");        
+        
+        int idEncuestadorBuscado = Integer.parseInt(idEncuestador);
+        
+        EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
+        
+        request.setAttribute("encuestador",encuestadorDao.getbyId(idEncuestadorBuscado));
+                        
+        request.getRequestDispatcher("/WEB-INF/pages/agregarUsuario.jsp").forward(request, response);
+    }
+ 
+     private void eliminarUsuario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String idEncuestador = request.getParameter("idEncuestador");        
+        
+        int idEncuestadorBuscado = Integer.parseInt(idEncuestador);
+        
+        EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
+        
+        encuestadorDao.eliminar(encuestadorDao.getbyId(idEncuestadorBuscado));
+                
+        request.setAttribute("listaEncuestadores", encuestadorDao.getAll());
+        
+        
+        
+        request.getRequestDispatcher("/WEB-INF/pages/listaEncuestadores.jsp").forward(request, response);
+        
+    }
 }

@@ -35,10 +35,10 @@ public class EncuestadorServlet extends HttpServlet {
         
         
         if (request.getParameter("action").equals("agregar")) agregarEncuestador(request,response);
-        if (request.getParameter("action").equals("eliminar")) eliminarEncuestador(request,response);
+        
         if (request.getParameter("action").equals("listar")) listarEncuestadores(request,response);
         if (request.getParameter("action").equals("guardar")) guardarEncuestador(request,response);
-        if (request.getParameter("action").equals("editar")) editarEncuestador(request,response);
+        
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -110,22 +110,7 @@ public class EncuestadorServlet extends HttpServlet {
         
     }
 
-    private void eliminarEncuestador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idEncuestador = request.getParameter("idEncuestador");        
-        
-        int idEncuestadorBuscado = Integer.parseInt(idEncuestador);
-        
-        EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
-        
-        encuestadorDao.eliminar(encuestadorDao.getbyId(idEncuestadorBuscado));
-                
-        request.setAttribute("listaEncuestadores", encuestadorDao.getAll());
-        
-        
-        
-        request.getRequestDispatcher("/WEB-INF/pages/listaEncuestadores.jsp").forward(request, response);
-        
-    }
+
 
     private void listarEncuestadores(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
@@ -134,7 +119,7 @@ public class EncuestadorServlet extends HttpServlet {
                 
         request.setAttribute("listaEncuestadores", encuestadorDao.getAll());
         
-        request.getRequestDispatcher("/WEB-INF/pages/listaEncuestadores.jspç").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/listaEncuestadores.jsp").forward(request, response);
 
     }
 
@@ -152,15 +137,5 @@ public class EncuestadorServlet extends HttpServlet {
         
     }
 
-    private void editarEncuestador(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idEncuestador = request.getParameter("idEncuestador");        
-        
-        int idEncuestadorBuscado = Integer.parseInt(idEncuestador);
-        
-        EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
-        
-        request.setAttribute("encuestador",encuestadorDao.getbyId(idEncuestadorBuscado));
-                        
-        request.getRequestDispatcher("/WEB-INF/pages/agregarEvaluador.jsp").forward(request, response);
-    }
+   
 }

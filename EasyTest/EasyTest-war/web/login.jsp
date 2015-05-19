@@ -10,13 +10,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-                 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-             <link href="css/bootstrapValidator.min.css" rel="stylesheet"/>
-    <script src="js/bootstrapValidator.min.js" type="text/javascript"></script>
+                 <link href="/EasyTestWeb/resources/css/bootstrap.min.css" rel="stylesheet">
+             <link href="/EasyTestWeb/resources/css/bootstrapValidator.min.css" rel="stylesheet"/>
+    <script src="/EasyTestWeb/resources/js/bootstrapValidator.min.js" type="text/javascript"></script>
          
     </head>
     <body>
-        <form action="<%= response.encodeURL("j_security_check") %>" method="POST">
+        <form action="j_security_check" method="POST">
             <div class="col-md-6 col-md-offset-3">
 		<div class="panel panel-default">
 			
@@ -76,6 +76,6 @@
 </form>
             -->
  <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
+    <script src="/EasyTestWeb/resources/js/bootstrap.min.js"></script>
     </body>
 </html>
