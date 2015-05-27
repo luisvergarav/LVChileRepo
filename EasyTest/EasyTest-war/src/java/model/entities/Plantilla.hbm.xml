@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
+<!-- Generated 27-may-2015 14:38:55 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.entities.Plantilla" table="PLANTILLA" schema="EASYTEST" optimistic-lock="version">
+    <class name="model.entities.Plantilla" table="PLANTILLA" schema="EASYTEST">
         <id name="idplantilla" type="java.lang.Integer">
             <column name="IDPLANTILLA" precision="22" scale="0" />
-            <generator class="assigned" />
+            <generator class="assigned"></generator>
         </id>
         <many-to-one name="encuestador" class="model.entities.Encuestador" fetch="select">
             <column name="IDENCUESTADOR" precision="22" scale="0" />

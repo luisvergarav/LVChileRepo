@@ -52,7 +52,7 @@ public class EncuestadorDaoImpl implements EncuestadorDao{
         encuestador = (Encuestador) session.get(Encuestador.class,idEncuestador);
         trx.commit();
         }catch(HibernateException e){
-			
+		e.printStackTrace();
 		}finally{
 			session.close();
 		}
@@ -70,7 +70,7 @@ public class EncuestadorDaoImpl implements EncuestadorDao{
         session.saveOrUpdate(encuestador);
         trx.commit();
         }catch(HibernateException e){
-			
+			e.printStackTrace();
 		}finally{
 			session.close();
 		}
@@ -108,6 +108,23 @@ public class EncuestadorDaoImpl implements EncuestadorDao{
         try{
                 trx =session.beginTransaction();
                 encuestador= (Encuestador) session.createQuery("from Encuestador where Rut = ?").setString(0, rutEncuestadorBuscado).uniqueResult();
+                trx.commit();
+        }catch(HibernateException e){
+			
+		}finally{
+			session.close();
+		}
+        return encuestador;
+    }
+
+    @Override
+    public Encuestador getbyNick(String nick) {
+         Session session = NewHibernateUtil.getSessionFactory().openSession();
+         Encuestador encuestador = new Encuestador();
+        Transaction trx = null;
+        try{
+                trx =session.beginTransaction();
+                encuestador= (Encuestador) session.createQuery("from Encuestador where nick = ?").setString(0, nick).uniqueResult();
                 trx.commit();
         }catch(HibernateException e){
 			

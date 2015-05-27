@@ -39,10 +39,10 @@
 						<div class="col-md-4">
 							<select class="form-control" id="membership" name="membership">
 								<option value="0">-Selecciona un perfil a asignar-</option>
-								<option value="1">Encuestador</option>
-								<option value="2">Jefe de Personal</option>
-                                                                <option value="2">Jefe de Estudio</option>
-                                                                <option value="2">Timer</option>
+								<option value="1">ENCUESTADOR</option>
+								<option value="2">JEFE DE PERSONAL</option>
+                                                                <option value="2">JEFE DE ESTUDIO</option>
+                                                                <option value="2">TIMER</option>
 							</select>
 						</div>
 					</div>

@@ -1,8 +1,7 @@
 package model.entities;
-// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
+// Generated 27-may-2015 14:38:52 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,8 +25,7 @@ public class Evaluacion  implements java.io.Serializable {
     }
 
 	
-    public Evaluacion(Integer id, Plantilla plantilla, Encuestador encuestador, String item, String cabecera, String mensajeconfirmacion, String piepagina) {
-        this.id = id;
+    public Evaluacion(Plantilla plantilla, Encuestador encuestador, String item, String cabecera, String mensajeconfirmacion, String piepagina) {
         this.plantilla = plantilla;
         this.encuestador = encuestador;
         this.item = item;
@@ -35,8 +33,7 @@ public class Evaluacion  implements java.io.Serializable {
         this.mensajeconfirmacion = mensajeconfirmacion;
         this.piepagina = piepagina;
     }
-    public Evaluacion(Integer id, Plantilla plantilla, Encuestador encuestador, String item, String cabecera, String mensajeconfirmacion, String piepagina, Set evapreguntases, Set tests) {
-       this.id = id;
+    public Evaluacion(Plantilla plantilla, Encuestador encuestador, String item, String cabecera, String mensajeconfirmacion, String piepagina, Set evapreguntases, Set tests) {
        this.plantilla = plantilla;
        this.encuestador = encuestador;
        this.item = item;

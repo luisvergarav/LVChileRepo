@@ -16,8 +16,9 @@
          
     </head>
     <body>
+        <div class="container col-centered" >
         <form action="j_security_check" method="POST">
-            <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-6 col-md-offset-3" >
 		<div class="panel panel-default">
 			
 			<div class="panel-heading">
@@ -57,6 +58,7 @@
 	
             
         </form>
+        </div>
             <!--
         <form method="POST" action='<%= response.encodeURL("j_security_check") %>'>
 <table border="0" cellspacing="5">

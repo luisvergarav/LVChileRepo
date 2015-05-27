@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-may-2015 14:38:55 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.entities.UserRoles" table="USER_ROLES" schema="EASYTEST" optimistic-lock="version">
+        <composite-id name="id" class="model.entities.UserRolesId">
+            <key-property name="idencuestador" type="java.lang.Integer">
+                <column name="IDENCUESTADOR" precision="22" scale="0" />
+            </key-property>
+            <key-property name="roleName" type="string">
+                <column name="ROLE_NAME" length="50" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="encuestador" class="model.entities.Encuestador" update="false" insert="false" fetch="select">
+            <column name="IDENCUESTADOR" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

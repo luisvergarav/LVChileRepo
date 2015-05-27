@@ -18,5 +18,5 @@ public interface EncuestadorDao {
     public void eliminar(Encuestador encuestador);
     public void actualizar(Encuestador encuestador);
     public Encuestador getbyRut(String rutEncuestador);
-    
+    public Encuestador getbyNick(String nick);
 }

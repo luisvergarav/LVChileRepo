@@ -39,26 +39,23 @@
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">Link</a></li>
-                        <c:if test='<%=request.isUserInRole("encuestador")%>' >
+                    		
+                        <c:if test='<%=request.isUserInRole("ENCUESTADOR")%>' >
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tareas<b class="caret"></b></a>
-				<ul class="dropdown-menu">
-					<li><a href="<%=request.getContextPath()%>/EncuestadorServlet?action=agregar">Crear Encuestador</a></li>
-					<li><a href="<%=request.getContextPath()%>/EvaluacionServlet?action=agregar">Crear Test</a></li>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Encuestador<b class="caret"></b></a>
+				<ul class="dropdown-menu">					
+					<li><a href="<%=request.getContextPath()%>/encuestador/EvaluacionServlet?action=agregar">Crear Test</a></li>
 				
 				</ul>
 			</li>
                         </c:if>
-                        <c:if test='<%=request.isUserInRole("manager-gui")%>' >
+                        <c:if test='<%=request.isUserInRole("ADMIN")%>' >
                         <li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mantenedor<b class="caret"></b></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
 				<ul class="dropdown-menu">
                                         <li><a href="<%=request.getContextPath()%>/restricted/mantenedorServlet?action=agregarUsuario">Registrar Usuarios</a></li>
-					<li><a href="<%=request.getContextPath()%>/EncuestadorServlet?action=agregar">Crear Encuestador</a></li>
-					<li><a href="<%=request.getContextPath()%>/EvaluacionServlet?action=agregar">Crear Test</a></li>
-					<li><a href="#">Something else here</a></li>
-					<li><a href="#">Separated link</a></li>
+					<li><a href="<%=request.getContextPath()%>/encuestador/EncuestadorServlet?action=agregar">Crear Encuestador</a></li>
+				
 				</ul>
 			</li>
                         </c:if>

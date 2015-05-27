@@ -1,8 +1,7 @@
 package model.entities;
-// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
+// Generated 27-may-2015 14:38:52 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,13 +20,11 @@ public class Test  implements java.io.Serializable {
     }
 
 	
-    public Test(Integer idtest, Evaluacion evaluacion, Encuestado encuestado) {
-        this.idtest = idtest;
+    public Test(Evaluacion evaluacion, Encuestado encuestado) {
         this.evaluacion = evaluacion;
         this.encuestado = encuestado;
     }
-    public Test(Integer idtest, Evaluacion evaluacion, Encuestado encuestado, Set respuestas) {
-       this.idtest = idtest;
+    public Test(Evaluacion evaluacion, Encuestado encuestado, Set respuestas) {
        this.evaluacion = evaluacion;
        this.encuestado = encuestado;
        this.respuestas = respuestas;

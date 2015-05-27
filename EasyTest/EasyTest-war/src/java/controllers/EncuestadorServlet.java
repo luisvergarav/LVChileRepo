@@ -20,7 +20,7 @@ import model.entities.Encuestador;
  *
  * @author Luis
  */
-@WebServlet(name = "EncuestadorServlet", urlPatterns = {"/EncuestadorServlet"})
+@WebServlet(name = "EncuestadorServlet", urlPatterns = {"/encuestador/EncuestadorServlet"})
 public class EncuestadorServlet extends HttpServlet {
 
     /** 

@@ -43,5 +43,10 @@ public class EncuestadorDaoServiceImpl implements EncuestadorDao {
     public Encuestador getbyRut(String rutEncuestador) {
         return dao.getbyRut(rutEncuestador);
     }
+
+    @Override
+    public Encuestador getbyNick(String nick) {
+        return dao.getbyNick(nick);
+    }
     
 }

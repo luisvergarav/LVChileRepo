@@ -33,9 +33,13 @@ Encuestador encuestador = (Encuestador )request.getAttribute("encuestador");
 			</div>
 
 			<div class="panel-body">	
-                            <input type="hidden"                               
-                                   value="${encuestador.getIdencuestador()}"                                    
-                                   id="idEncuestador" name="idEncuestador"/>
+                            <div class="form-group">
+						<label class="col-md-4 control-label" >Rut</label>
+						<div class="col-md-8">
+							<input type="text"  value="${encuestador.getIdencuestador()}"    id="idEncuestador" name="idEncuestador"/>
+						</div>
+					</div>
+                            
 					<div class="form-group">
 						<label class="col-md-4 control-label" >Nombre</label>
 						<div class="col-md-8">
@@ -95,6 +99,18 @@ Encuestador encuestador = (Encuestador )request.getAttribute("encuestador");
 						</div>
 					</div>
 			
+                                        <div class="form-group">
+						<label class="col-md-4 control-label" for="membership">Rol</label>
+						<div class="col-md-8">
+							<select class="form-control" id="rol" name="rol">
+								<option value="0">-Selecciona un perfil a asignar-</option>
+								<option value="Encuestador">Encuestador</option>
+								<option value="Jefe de Personal">Jefe de Personal</option>
+                                                                <option value="Jefe de Estudio">Jefe de Estudio</option>
+                                                                <option value="Timer">Timer</option>
+							</select>
+						</div>
+					</div>
 					<br>
 		
 					<div class="form-group">

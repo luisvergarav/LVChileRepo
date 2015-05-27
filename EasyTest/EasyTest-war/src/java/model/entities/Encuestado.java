@@ -1,8 +1,7 @@
 package model.entities;
-// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
+// Generated 27-may-2015 14:38:52 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,13 +25,11 @@ public class Encuestado  implements java.io.Serializable {
     }
 
 	
-    public Encuestado(Integer idenc, String apellido, String nombre) {
-        this.idenc = idenc;
+    public Encuestado(String apellido, String nombre) {
         this.apellido = apellido;
         this.nombre = nombre;
     }
-    public Encuestado(Integer idenc, String apellido, String nombre, String curso, String sexo, String email, String nivel, String colegio, Set tests) {
-       this.idenc = idenc;
+    public Encuestado(String apellido, String nombre, String curso, String sexo, String email, String nivel, String colegio, Set tests) {
        this.apellido = apellido;
        this.nombre = nombre;
        this.curso = curso;

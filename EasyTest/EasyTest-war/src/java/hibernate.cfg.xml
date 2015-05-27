@@ -19,5 +19,6 @@
     <mapping resource="model/entities/Grupopreguntas.hbm.xml"/>
     <mapping resource="model/entities/Evaluacion.hbm.xml"/>
     <mapping resource="model/entities/Respuesta.hbm.xml"/>
+<mapping resource="model/entities/UserRoles.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

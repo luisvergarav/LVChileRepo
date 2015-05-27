@@ -49,7 +49,7 @@ import org.springframework.web.servlet.tags.EvalTag;
  *
  * @author PC
  */
-@WebServlet(name = "TestServlet", urlPatterns = {"/TestServlet"})
+@WebServlet(name = "TestServlet", urlPatterns = {"/encuestador/TestServlet"})
 public class TestServlet extends HttpServlet {
 
     /**

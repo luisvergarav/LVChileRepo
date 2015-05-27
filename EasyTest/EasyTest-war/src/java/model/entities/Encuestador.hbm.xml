@@ -1,14 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 14-may-2015 17:53:54 by Hibernate Tools 4.3.1 -->
+<!-- Generated 27-may-2015 14:38:55 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.entities.Encuestador" table="ENCUESTADOR" schema="EASYTEST" optimistic-lock="version">
+    <class name="model.entities.Encuestador" table="ENCUESTADOR" schema="EASYTEST">
         <id name="idencuestador" type="java.lang.Integer">
             <column name="IDENCUESTADOR" precision="22" scale="0" />
-            <generator class="sequence" >
-                <param name="sequence">IDENCUESTADOR_SEC</param>
-            </generator>
+            <generator class="assigned"></generator>
         </id>
         <property name="nombre" type="string">
             <column name="NOMBRE" length="30" not-null="true" />
@@ -40,13 +38,11 @@
             </key>
             <one-to-many class="model.entities.Plantilla" />
         </set>
-        <set name="roleses" table="USER_ROLES" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="USER_IDENCUESTADOR" precision="22" scale="0" not-null="true" />
+        <set name="roleses" table="USER_ROLES" inverse="false" lazy="false" cascade="all" fetch="select">
+             <key>
+                <column name="IDENCUESTADOR" precision="22" scale="0" not-null="true" />
             </key>
-            <many-to-many entity-name="model.entities.Roles">
-                <column name="ROLES_ROLEID" precision="22" scale="0" not-null="true" />
-            </many-to-many>
+            <one-to-many class="model.entities.UserRoles" />
         </set>
     </class>
 </hibernate-mapping>

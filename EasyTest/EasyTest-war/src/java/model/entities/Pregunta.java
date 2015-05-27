@@ -1,8 +1,7 @@
 package model.entities;
-// Generated 14-may-2015 17:53:52 by Hibernate Tools 4.3.1
+// Generated 27-may-2015 14:38:52 by Hibernate Tools 4.3.1
 
 
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,15 +23,13 @@ public class Pregunta  implements java.io.Serializable {
     }
 
 	
-    public Pregunta(Integer id, Grupopreguntas grupopreguntas, String textopregunta, String tipopregunta, char obligatorio) {
-        this.id = id;
+    public Pregunta(Grupopreguntas grupopreguntas, String textopregunta, String tipopregunta, char obligatorio) {
         this.grupopreguntas = grupopreguntas;
         this.textopregunta = textopregunta;
         this.tipopregunta = tipopregunta;
         this.obligatorio = obligatorio;
     }
-    public Pregunta(Integer id, Grupopreguntas grupopreguntas, String textopregunta, String tipopregunta, char obligatorio, Set evapreguntases, Set alternativases) {
-       this.id = id;
+    public Pregunta(Grupopreguntas grupopreguntas, String textopregunta, String tipopregunta, char obligatorio, Set evapreguntases, Set alternativases) {
        this.grupopreguntas = grupopreguntas;
        this.textopregunta = textopregunta;
        this.tipopregunta = tipopregunta;

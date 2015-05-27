@@ -1,45 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@page import="model.entities.Encuestador"%>
-<%@page import="model.entities.Evaluacion"%>
-<%@page import="java.util.List"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%
-Encuestador encuestador = (Encuestador )request.getAttribute("encuestador");
 
-
-//List<String> errores = (List<String>) request.getAttribute("errores");
-
-%>
- <t:template>
+<t:template>
     <jsp:attribute name="header">
         
-
+   
 
     </jsp:attribute>
     <jsp:attribute name="footer">
-     
+      
     </jsp:attribute>
     <jsp:body>
-  
-        <form action="EncuestadorServlet?action=guardar" method="POST" id="registroForm">
+        		
+         <form action="EncuestadorServlet?action=guardar" method="POST">
             <div class="col-md-6 col-md-offset-3">
 		<div class="panel panel-default">
 			
 			<div class="panel-heading">
-				<b>Datos del Encuestador</b>
+				<b>Registrese Gratis!!</b>
 			</div>
 
 			<div class="panel-body">	
-                            
-                            <div class="form-group">
-						<label class="col-md-4 control-label" >Rut</label>
-						<div class="col-md-8">
-							<input type="text"  value="${encuestador.getIdencuestador()}"    id="idEncuestador" name="idEncuestador"/>
-						</div>
-					</div>
-
 
 					<div class="form-group">
 						<label class="col-md-4 control-label" >Nombre</label>
@@ -100,14 +81,23 @@ Encuestador encuestador = (Encuestador )request.getAttribute("encuestador");
 						</div>
 					</div>
 			
-					<br>
+                                                
 		
-					<div class="form-group">
-						<div class="col-md-4 col-md-offset-5">
-							<button type="submit" class="btn btn-primary">ENVIAR</button>
-						</div>
-					</div>
+					
 			</div>
+                                                <div class="panel-footer">
+                                                    <div class="form-group">	
+
+                                                        <A href="${request.getContextPath()}login.jsp" class="btn btn-primary">Login</a>                                                        
+							
+                                                
+                                                			
+                                                         
+                                                         <button type="submit" class="btn btn-primary pull-right">REGISTRAR</button>   
+                                                    </div>
+                                                    
+                                                </div>  
+                                                
 			<!-- Fin del panel principal -->			
 		</div>
 	</div>				
@@ -116,7 +106,4 @@ Encuestador encuestador = (Encuestador )request.getAttribute("encuestador");
         </form>
 
     </jsp:body>
-      
-
 </t:template>
-

@@ -6,6 +6,7 @@ package controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,7 +39,7 @@ import model.entities.Pregunta;
  * @author Luis
  */
 
-@WebServlet(name = "EvaluacionServlet", urlPatterns = {"/EvaluacionServlet"})
+@WebServlet(name = "EvaluacionServlet", urlPatterns = {"/encuestador/EvaluacionServlet"})
 public class EvaluacionServlet extends HttpServlet {
 
     /** 
@@ -106,16 +107,24 @@ public class EvaluacionServlet extends HttpServlet {
         
       HttpSession session = request.getSession();
       
-    Encuestador encuestador =  (Encuestador)      session.getAttribute("encuestador");
-    String rutEncuestadorBuscado = encuestador.getRut();
+      
+      
+      String currentUser = (String )request.getUserPrincipal().getName();
+      
+      
+      
+      Encuestador encuestador = encuestadorDaoImpl.getbyId(Integer.parseInt(currentUser));
+      
+    //Encuestador encuestador =  (Encuestador)      session.getAttribute("encuestador");
+    //String rutEncuestadorBuscado = encuestador.getRut();
     
     Evaluacion evaluacion = new Evaluacion();
     
     
-    evaluacion.setEncuestador(encuestadorDaoImpl.getbyRut(rutEncuestadorBuscado));
+    evaluacion.setEncuestador(encuestador);
     
          
-    
+    session.setAttribute("encuestador", encuestador);
     request.setAttribute("evaluacion", evaluacion);
     request.setAttribute("listaPlantillas", plantillaDaoImpl.getAll());
         System.out.println("Tamaño" + plantillaDaoImpl.getAll().size());

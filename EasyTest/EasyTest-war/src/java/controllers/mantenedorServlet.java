@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Dao.EncuestadorDaoServiceImpl;
 import model.entities.Encuestador;
+import model.entities.UserRoles;
+import model.entities.UserRolesId;
 
 /**
  *
@@ -93,6 +95,7 @@ public class mantenedorServlet extends HttpServlet {
         String nick = request.getParameter("nick");
         String contrasena = request.getParameter("contrasena");
         String email = request.getParameter("email");
+        String rol = request.getParameter("rol");
         int idParseado;
         
         EncuestadorDaoServiceImpl encuestadorDao = new EncuestadorDaoServiceImpl();
@@ -111,7 +114,22 @@ public class mantenedorServlet extends HttpServlet {
         encuestador.setNick(nick);
         encuestador.setNombre(nombre);
         encuestador.setApellido(apellido);
-                
+        
+        UserRoles userRol = new UserRoles();
+        
+        userRol.setEncuestador(encuestador);
+        
+        UserRolesId userRolId = new UserRolesId();
+        
+        userRolId.setIdencuestador(encuestador.getIdencuestador());
+        
+        userRolId.setRoleName(rol);
+        
+        userRol.setId(userRolId);
+        
+        encuestador.getRoleses().add(userRol);
+        
+        
         
         encuestadorDao.guardar(encuestador);
         HttpSession session = request.getSession();
