@@ -18,15 +18,6 @@ import model.Entitys.Institucion;
 import model.Entitys.Seccion;
 import model.Entitys.Semestre;
 import model.Entitys.Taller;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -161,6 +152,7 @@ public class InformesController {
      
       try
         {
+            /*
             JasperReport jasperReport = null;
             JasperPrint jasperPrint = null;
             JasperDesign jasperDesign = null;
@@ -170,6 +162,7 @@ public class InformesController {
             jasperPrint  = JasperFillManager.fillReport(jasperReport, parameters, new JRBeanCollectionDataSource(alumnoDao.obtenerPorId(rutAlumno).getAlumnoseccions()));
             JasperExportManager.exportReportToPdfFile(jasperPrint,"StudentInfo.pdf");
             JasperViewer.viewReport(jasperPrint);
+                    */
         }
         catch(Exception ex)
         {
